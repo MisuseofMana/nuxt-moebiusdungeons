@@ -26,6 +26,7 @@
 
 <script>
     export default {
+        name:'Tooltip',
         props: {
             heading: {
                 type: String,

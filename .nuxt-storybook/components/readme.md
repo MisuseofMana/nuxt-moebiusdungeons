@@ -8,8 +8,10 @@ You can directly use them in pages and other components without the need to impo
 
 - `<Button>` | `<button>` (components/Atoms/Button/Button.vue)
 - `<Coin>` | `<coin>` (components/Atoms/Coin/Coin.vue)
+- `<ContestBar>` | `<contest-bar>` (components/Atoms/ContestBar/ContestBar.vue)
 - `<ImageContainer>` | `<image-container>` (components/Atoms/Image/ImageContainer.vue)
 - `<InputField>` | `<input-field>` (components/Atoms/InputField/InputField.vue)
-- `<ContestBar>` | `<contest-bar>` (components/Atoms/ContestBar/ContestBar.vue)
+- `<CharacterImageMock>` | `<character-image-mock>` (components/Atoms/CharacterImage/CharacterImage.mock.js)
+- `<CharacterImage>` | `<character-image>` (components/Atoms/CharacterImage/CharacterImage.vue)
 - `<Tooltip>` | `<tooltip>` (components/Atoms/Tooltip/Tooltip.vue)
 - `<SceneHeading>` | `<scene-heading>` (components/Organisms/SceneHeading/SceneHeading.vue)

@@ -10,6 +10,9 @@ export default {
       '@/components/Organisms',
     ]
   },
+  css: [
+    '@/assets/css/transitions.css'
+  ],
   plugins: ['@/plugins/vuetify.js'],
   head: {
     title: 'Moebius Dungeons',

@@ -5,14 +5,20 @@
   "Coin": {
     "description": "Auto imported from components/Atoms/Coin/Coin.vue"
   },
+  "ContestBar": {
+    "description": "Auto imported from components/Atoms/ContestBar/ContestBar.vue"
+  },
   "ImageContainer": {
     "description": "Auto imported from components/Atoms/Image/ImageContainer.vue"
   },
   "InputField": {
     "description": "Auto imported from components/Atoms/InputField/InputField.vue"
   },
-  "ContestBar": {
-    "description": "Auto imported from components/Atoms/ContestBar/ContestBar.vue"
+  "CharacterImageMock": {
+    "description": "Auto imported from components/Atoms/CharacterImage/CharacterImage.mock.js"
+  },
+  "CharacterImage": {
+    "description": "Auto imported from components/Atoms/CharacterImage/CharacterImage.vue"
   },
   "Tooltip": {
     "description": "Auto imported from components/Atoms/Tooltip/Tooltip.vue"

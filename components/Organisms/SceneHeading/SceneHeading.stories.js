@@ -1,5 +1,5 @@
 export default {
-    title: 'Atoms/Scene Heading',
+    title: 'Organisms/Scene Heading',
     argTypes: {
       phase: {
         control:{

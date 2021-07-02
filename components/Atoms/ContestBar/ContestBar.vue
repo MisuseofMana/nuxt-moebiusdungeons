@@ -5,6 +5,7 @@
 
 <script>
     export default {
+        name: 'ContestBar',
         props: {
             text: {
                 type: String,

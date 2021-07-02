@@ -11,9 +11,10 @@
     </v-overlay>
 </v-card>
 </template>
-(
-<script>)
+
+<script>
     export default {
+        name: 'Coin',
         props: {
             wealth: {
                 type: Number,

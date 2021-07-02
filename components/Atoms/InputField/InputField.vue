@@ -8,6 +8,7 @@
 
 <script>
     export default {
+        name:'InputField',
         props: {
             label: {
                 type: String,

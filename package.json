@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/MisuseofMana/nuxt-moebiusdungeons#readme",
   "dependencies": {
+    "animate.css": "^4.1.1",
     "core-js": "^3.15.2",
     "nuxt": "^2.15.7"
   },
