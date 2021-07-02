@@ -1,0 +1,29 @@
+{
+  "name": "nuxt-moebiusdungeons",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "npx nuxt storybook -s ./assets -p 7001"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MisuseofMana/nuxt-moebiusdungeons.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MisuseofMana/nuxt-moebiusdungeons/issues"
+  },
+  "homepage": "https://github.com/MisuseofMana/nuxt-moebiusdungeons#readme",
+  "dependencies": {
+    "core-js": "^3.15.2",
+    "nuxt": "^2.15.7"
+  },
+  "devDependencies": {
+    "@nuxtjs/storybook": "^4.0.4",
+    "@nuxtjs/vuetify": "^1.12.1",
+    "postcss": "^8.3.5"
+  }
+}
