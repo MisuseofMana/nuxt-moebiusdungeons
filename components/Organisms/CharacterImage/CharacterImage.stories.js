@@ -1,7 +1,7 @@
-import characters from '@/components/Atoms/CharacterImage/CharacterImage.mock.js'
+import characters from '@/components/Organisms/CharacterImage/CharacterImage.mock.js'
 
 export default {
-  title: 'Atoms/Character Image',
+  title: 'Organisms/Character Image',
   argTypes: {
     who: {
       control:{

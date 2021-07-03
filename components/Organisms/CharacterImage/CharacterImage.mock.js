@@ -3,6 +3,7 @@ export default {
     swordsman: {image: 'swordsman', tagline: 'Protected by a metal mesh, runs his blade through monster flesh.'},
     mage: {image: 'mage', tagline: 'Tinctures made of bark and wirt, ancient words designed to hurt.'},
     varlet: {image: 'varlet', tagline: `A shoddy cloak, a knife that's worse, dishonest tools to cut your purse.`},
+    
     // Monsters
     bandit: {image: 'bandit', tagline:`Shadows hide two men from sight. Their motives born of moral spite.`},
     banshee: {image: 'banshee', tagline:`She moans in anguish, ghostly, gritty. Her eyes shine bright to see your pity.`},
@@ -26,4 +27,11 @@ export default {
     skeleton: {image: 'skeleton', tagline:`Strong dark magic guides their hand, to stab and fight and kill and stand.`},
     slime: {image: 'slime', tagline:`One wrong step to right or left is sure to spell your slimy death.`},
     swampling: {image: 'swampling', tagline:`Into mud as thick as tar, your skin will boil, bubble, and scar`},
+    
+    // Shopkeeps
+    merchant: {image:'merchant', tagline:`A man with so much loot to spare, his prices set up to be fair. `},
+    witch: {image:'witch', tagline:`You should feel a presence grow, bow your head, make your breath slow.`},
+    cleric: {image:'cleric', tagline:`They ask for smoke, and chant, and choir. Met instead by woman friar.`},
+    graverobber: {image:'graverobber', tagline:`Once a thief, now sanity lost. Digging graves to pay his cost.`},
+    scribe: {image:'scribe', tagline:`An artist boy with talent rare. His charms and wards crafted with care.`},
 }
