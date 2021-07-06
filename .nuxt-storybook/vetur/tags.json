@@ -8,22 +8,37 @@
   "ContestBar": {
     "description": "Auto imported from components/Atoms/ContestBar/ContestBar.vue"
   },
-  "ImageContainer": {
-    "description": "Auto imported from components/Atoms/Image/ImageContainer.vue"
-  },
   "InputField": {
     "description": "Auto imported from components/Atoms/InputField/InputField.vue"
   },
-  "CharacterImageMock": {
-    "description": "Auto imported from components/Atoms/CharacterImage/CharacterImage.mock.js"
+  "MettleGauge": {
+    "description": "Auto imported from components/Atoms/MettleGauge/MettleGauge.vue"
   },
-  "CharacterImage": {
-    "description": "Auto imported from components/Atoms/CharacterImage/CharacterImage.vue"
+  "SigilImage": {
+    "description": "Auto imported from components/Atoms/SigilImage/SigilImage.vue"
+  },
+  "DamageReadout": {
+    "description": "Auto imported from components/Atoms/DamageReadout/DamageReadout.vue"
   },
   "Tooltip": {
     "description": "Auto imported from components/Atoms/Tooltip/Tooltip.vue"
   },
+  "CharacterImageMock": {
+    "description": "Auto imported from components/Organisms/CharacterImage/CharacterImage.mock.js"
+  },
+  "CharacterImage": {
+    "description": "Auto imported from components/Organisms/CharacterImage/CharacterImage.vue"
+  },
+  "InventoryGrid": {
+    "description": "Auto imported from components/Organisms/InventoryGrid/InventoryGrid.vue"
+  },
   "SceneHeading": {
     "description": "Auto imported from components/Organisms/SceneHeading/SceneHeading.vue"
+  },
+  "ShopItemBar": {
+    "description": "Auto imported from components/Organisms/ShopItemBar/ShopItemBar.vue"
+  },
+  "StatBlock": {
+    "description": "Auto imported from components/Organisms/StatBlock/StatBlock.vue"
   }
 }

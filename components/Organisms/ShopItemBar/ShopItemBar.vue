@@ -1,17 +1,36 @@
 <template>
-    <v-card class="d-flex align-center justify-center">
-        <Coin class="mr-4"/>
-        <div class="d-flex flex-column text-center">
-            <div class="text-h6">ITEM NAME</div>
-            <div class="text-subtitle">ITEM EFFECT</div>
+    <v-card hover class="d-flex align-center justify-center">
+        <Coin :wealth="items.cost" class="mr-4"/>
+        <div class="d-flex flex-column text-cente mr-4">
+            <div class="text-h6"> {{ items.name }} </div>
+            <div class="text-subtitle">{{ items.description }}</div>
         </div>
-        <ImageContainer/>
+        <v-img 
+        :src="items.icon"
+        contain
+        height="60"
+        width="60"
+        max-width="60"
+        max-height="60"
+        />
     </v-card>
 </template>
 
 <script>
+import clericItems from '@/mocks/items/clericItems.mock.js'
+
     export default {
         name: 'ShopItemBar',
+        props: {
+            shopkeep: {
+                type: String,
+                default: 'cleric'
+            },
+            items: {
+                type: Object,
+                default: () => clericItems['minorHeal']
+            }
+        },
     }
 </script>
 

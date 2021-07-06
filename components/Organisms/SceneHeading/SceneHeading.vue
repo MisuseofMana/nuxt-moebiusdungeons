@@ -1,10 +1,9 @@
 <template>
     <div class="d-flex align-center">
-        <v-img 
-            v-bind="$attrs"
-            :src="require(`@/assets/images/sigils/${imageSource}.png`)"
-            max-height="75"
-            max-width="75"
+        <SigilImage 
+            :src="imageSource"
+            width="75"
+            height="75"
             class="mr-2"
         />
         <div class="text-h2">{{ phase }}</div>

@@ -13,7 +13,7 @@
             <div class="size animateRank" :class="rarityOverlay"></div>
             </v-img>
             <v-fade-transition>
-                <v-overlay v-if="hover" :key="taglineOverlay + who.image" opacity=".5" :absolute="true" :value="true" class="white--text text-body-1 pa-2 text-center text-uppercase">
+                <v-overlay v-if="hover" :key="taglineOverlay + who.image" opacity=".5" :absolute="true" :value="true" class="white--text text-body-1 pa-5 text-center text-uppercase">
                     <div class="shadow">
                         {{ who.tagline }}
                     </div>
@@ -32,7 +32,7 @@ import characters from '@/components/Organisms/CharacterImage/CharacterImage.moc
         props: {
             who: {
                 type: Object,
-                default: characters['swordsman']
+                default: () => characters['swordsman']
             },
             rarity: {
                 type: String,
@@ -61,8 +61,8 @@ import characters from '@/components/Organisms/CharacterImage/CharacterImage.moc
 
 <style lang="scss" scoped>
 .size {
-    height: 240px;
-    width: 205px;
+    height: 245px;
+    width: 210px;
 }
 
 .virulentOverlay {
@@ -106,5 +106,9 @@ import characters from '@/components/Organisms/CharacterImage/CharacterImage.moc
     -webkit-animation: rankAnimation 9s ease infinite;
     -moz-animation: rankAnimation 9s ease infinite;
     animation: rankAnimation 9s ease infinite;
+}
+
+.shadow {
+    text-shadow:black -1px 0px 5px;
 }
 </style>

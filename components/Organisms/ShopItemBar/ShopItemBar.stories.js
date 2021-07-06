@@ -1,12 +1,14 @@
+import clericItems from '@/mocks/items/clericItems.mock.js'
+
 export default {
     title: 'Organisms/Shop Item Bar',
     argTypes: {
-      phase: {
+      items: {
         control:{
           type: 'select',
-          options: ['Shop Phase', 'Dungeon Phase', 'Shop Select Phase', 'Travel Phase'],
+          options: clericItems,
         },
-        defaultValue: 'Dungeon Phase'
+        defaultValue: clericItems['minorHeal']
       },
     }
   }
