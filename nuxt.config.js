@@ -7,6 +7,7 @@ export default {
   components: {
     dirs: [
       '@/components/Atoms',
+      '@/components/Molecules',
       '@/components/Organisms',
     ]
   },

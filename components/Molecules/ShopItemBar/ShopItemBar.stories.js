@@ -1,7 +1,7 @@
 import clericItems from '@/mocks/items/clericItems.mock.js'
 
 export default {
-    title: 'Organisms/Shop Item Bar',
+    title: 'Molecules/Shop Item Bar',
     argTypes: {
       items: {
         control:{

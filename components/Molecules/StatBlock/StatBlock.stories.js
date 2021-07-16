@@ -1,5 +1,5 @@
 export default {
-    title: 'Organisms/Stat Block',
+    title: 'Molecules/Stat Block',
     argTypes: {
       attackType: {
         control:{

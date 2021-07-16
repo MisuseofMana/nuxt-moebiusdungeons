@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import characters from '@/components/Organisms/CharacterImage/CharacterImage.mock.js'
+import characters from '@/components/Molecules/CharacterImage/CharacterImage.mock.js'
 
     export default {
         name: 'CharacterImage',

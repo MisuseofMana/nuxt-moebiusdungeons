@@ -1,5 +1,5 @@
 export default {
-    title: 'Organisms/Inventory Grid',
+    title: 'Molecules/Inventory Grid',
     argTypes: {
       phase: {
         control:{
