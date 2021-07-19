@@ -150,9 +150,6 @@ export const mutations = {
       state.characterJSON = payload
     },
     POPULATE_SPRITE_ARRAY(state, payload) {
-      state.characterJSON[payload.index][payload.arrayName] = payload.loadedPaths
+      state.characterJSON[payload.index].sprites[payload.arrayName] = payload.loadedPaths
     },
-    SET_SPRITE_IMAGE(state, payload) {
-      state.characterJSON[payload.index][payload.target] = payload.img
-    }
 }
