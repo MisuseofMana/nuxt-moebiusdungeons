@@ -1,5 +1,6 @@
-const presets = [
-    [{
+export const state = () => ({
+    characterJSON: [
+      {
         name:'hair-back',
         sprites: {
           flat:[],
@@ -140,7 +141,18 @@ const presets = [
         rotation: 0,
         max: 13,
         lightness:0
-      }]
-]
-
-export default presets
+      },
+    ],
+})
+  
+export const mutations = {
+    REPLACE_CHARACTER_JSON(state, payload) {
+      state.characterJSON = payload
+    },
+    POPULATE_SPRITE_ARRAY(state, payload) {
+      state.characterJSON[payload.index][payload.arrayName] = payload.loadedPaths
+    },
+    SET_SPRITE_IMAGE(state, payload) {
+      state.characterJSON[payload.index][payload.target] = payload.img
+    }
+}

@@ -1,5 +1,5 @@
 export default {
-    title: 'Atoms/Avatar Editor Card',
+    title: 'Atoms/Avatar Canvas',
     argTypes: {
       editType: {
         control:{
@@ -8,16 +8,10 @@ export default {
         },
         defaultValue: 'body'
       },
-      selected: {
-        control:{
-          type: 'number',
-        },
-        defaultValue: 0
-      },
     }
   }
   
-  export const AvatarEditorCard = (argTypes) => ({
+  export const AvatarCanvas = (argTypes) => ({
     props: Object.keys(argTypes),
-    template: `<AvatarEditorCard  v-bind="$props"/>`,
+    template: `<AvatarCanvas  v-bind="$props"/>`,
   })

@@ -19,7 +19,7 @@
         </v-list-item-content>
 
         <v-list-item-icon>
-          <v-icon @click.stop="drawer = !drawer">mdi</v-icon>
+          <v-icon @click.stop="drawer = !drawer">mdi-cog</v-icon>
         </v-list-item-icon>
 
       </v-list-item>
@@ -31,38 +31,7 @@
       absolute
       temporary
     >
-      <v-list-item>
-        <v-list-item-avatar>
-          User Icon
-        </v-list-item-avatar>
-
-        <v-list-item-content>
-          <v-list-item-title class="text-uppercase">{{ username }}</v-list-item-title>
-        </v-list-item-content>
-
-        <v-list-item-icon>
-          <v-icon @click.stop="drawer = !drawer">mdi</v-icon>
-        </v-list-item-icon>
-
-      </v-list-item>
-
-      <v-divider></v-divider>
-
-      <v-list dense>
-        <v-list-item
-          v-for="item in items"
-          :key="item.title"
-          link
-        >
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+      STUFF GOES HERE
     </v-navigation-drawer>
   </v-sheet>
 </template>
@@ -73,10 +42,6 @@
         data() {
           return {
             drawer: null,
-            items: [
-          { title: 'Home', icon: 'mdi-view-dashboard' },
-          { title: 'About', icon: 'mdi-forum' },
-        ],
           }
         },
         props: {
@@ -84,14 +49,6 @@
                 type: String,
                 default:'Wanderer',
             },
-            height:{
-                type: Number,
-                default:100,
-            },
-            src:{
-                type: 'string',
-                default:'monster',
-            }
         }
     }
 </script>

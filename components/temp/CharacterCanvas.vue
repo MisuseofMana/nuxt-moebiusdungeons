@@ -1,6 +1,5 @@
 <template>
 <b-row>
-  
   <b-col cols="5" class="mb-4 mt-2 d-flex flex-row justify-content-center">
     <b-row align-h="center">
     <b-col cols="12" sm="12" md="10" class="d-flex flex-column justify-content-center ">
@@ -9,8 +8,6 @@
           <canvas id="canvas" class="mb-3" width="500" height="500"></canvas>
         </b-col>
       </b-row>
-      
-      <LoadingSpinner v-show="false" key="loader"/>
     </b-col>
           <Resets/>
     </b-row>
@@ -26,9 +23,6 @@
       @randomize-character="randomize()"
       @reset-all="resetAll()"
       @new-lightness="setLightness($event)"
-      @save-color="saveColor($event)"
-      @color-match="colorMatch($event)"
-      @swatch-pick="swatchPick($event)"
       @re-roll-features="reRollFeatures()"
       :hidden="selections[activeIndex].disable"
       :type="item.name.replace('-', ' ')"
@@ -50,7 +44,6 @@
 
 <script>
 import PartEditor from '@/components/PartEditor'
-import LoadingSpinner from '@/components/LoadingSpinner'
 import Resets from '@/components/Resets'
 
 import presets from '@/assets/presets/preset.js'
@@ -58,7 +51,6 @@ import presets from '@/assets/presets/preset.js'
 export default {
   components: {
     PartEditor,
-    LoadingSpinner,
     Resets
   },
   data() {
@@ -77,16 +69,9 @@ export default {
           },
           optionOn: false,
           which: 0,
-          top: 0,
-          left: 0,
-          rotation: 0,
           scaleWidth:500,
           scaleHeight:500,
           max: 17,
-          disable: false,
-          color:false,
-          hue:0,
-          saturation:0,
           lightness:0
         },
         {
@@ -105,10 +90,6 @@ export default {
           scaleWidth:500,
           scaleHeight:500,
           max: 10,
-          disable: false,
-          color:false,
-          hue:0,
-          saturation:0,
           lightness:0
         },
 
@@ -122,16 +103,9 @@ export default {
           },
           optionOn: false,
           which: 0,
-          top: 0,
-          left: 0,
-          rotation: 0,
           scaleWidth:500,
           scaleHeight:500,
           max:32,
-          disable: false,
-          color:false,
-          hue:0,
-          saturation:0,
           lightness:0
         },
 
@@ -145,16 +119,9 @@ export default {
           },
           optionOn: false,
           which: 0,
-          top: 0,
-          left: 0,
-          rotation: 0,
           scaleWidth:500,
           scaleHeight:500,
           max:18,
-          disable: false,
-          color:false,
-          hue:0,
-          saturation:0,
           lightness:0
         },
 
@@ -168,16 +135,9 @@ export default {
           },
           optionOn: false,
           which: 0,
-          top: 0,
-          left: 0,
-          rotation: 0,
           scaleWidth:500,
           scaleHeight:500,
           max: 23,
-          disable: false,
-          color:false,
-          hue:0,
-          saturation:0,
           lightness:0
         },
 
@@ -191,16 +151,9 @@ export default {
           },
           optionOn: false,
           which: 0,
-          top: 0,
-          left: 0,
-          rotation: 0,
           scaleWidth:500,
           scaleHeight:500,
           max: 21,
-          disable: false,
-          color:false,
-          hue:0,
-          saturation:0,
           lightness:0
         },
 
@@ -220,10 +173,6 @@ export default {
           scaleWidth:500,
           scaleHeight:500,
           max: 18,
-          disable: false,
-          color:false,
-          hue:0,
-          saturation:0,
           lightness:0
         },
         
@@ -243,10 +192,6 @@ export default {
           scaleWidth:500,
           scaleHeight:500,
           max: 22,
-          disable: false,
-          color:false,
-          hue:0,
-          saturation:0,
           lightness:0,
         },
 
@@ -266,10 +211,6 @@ export default {
           scaleWidth:500,
           scaleHeight:500,
           max: 20,
-          disable: false,
-          color:false,
-          hue:0,
-          saturation:0,
           lightness:0
         },
         {
@@ -288,17 +229,10 @@ export default {
           scaleWidth:500,
           scaleHeight:500,
           max: 13,
-          disable: false,
-          color:false,
-          hue:0,
-          saturation:0,
           lightness:0
         },
       ],
       imagesToLoad:0,
-      expandedMenu: 'choose',
-      colorList: [],
-      saveFile: null,
     }
   },
   computed: {
@@ -381,21 +315,13 @@ export default {
     },
     drawImages(){
       this.ctx.clearRect(0,0,500,500) //clear the display canvas
-      this.stagectx.clearRect(0,0,500,500) //clear the display canvas
+      this.stagectx.clearRect(0,0,500,500) //clear the staging canvas
 
       for(let selection in this.selections) { //loop through all selections
-        // this.stagectx.clearRect(0,0,500,500) //clear the display canvas
-        let current = this.selections[selection];
+        let current = this.selections[selection]; //set current variable
         
         if(current.disable === true) { /*draw nothing if the option is disabled*/ }
           else {          
-            if (current.rotation !== 0) {
-              this.stagectx.save();
-              this.stagectx.translate(250, 250);
-              this.stagectx.rotate(Math.PI / 12 * (current.rotation));
-              this.stagectx.translate(-250, -250); 
-            }
-    
             if(current.sprites.flatImg && current.color === true){
 
               this.stagectx.globalCompositeOperation = "source-over";
@@ -425,27 +351,12 @@ export default {
         this.ctx.globalCompositeOperation = "source-over";
         this.ctx.drawImage(this.stageCanvas, 0, 0, 500, 500, 0, 0, 500, 500);
       } //End for loop
-      // this.stagectx.clearRect(0,0,500,500)
-    },
-    pickNewItem(e) {
-      this.selections[this.activeIndex].which = e;
-      this.selections[this.activeIndex].disable = false;
-      this.init();
     },
     randomItem(){
       let randomPick = Math.floor(Math.random() * this.selections[this.activeIndex].max);
       this.selections[this.activeIndex].which = randomPick;
       this.selections[this.activeIndex].disable = false;
       this.init();
-    },
-    addNewColor() {
-      let active = this.selections[this.activeIndex]
-      if(this.colorList.length >= 12){
-        this.colorList.pop()
-      } 
-      
-      this.colorList.unshift(`hsl(${active.hue}, ${active.saturation}%, ${active.lightness}%)`);
-      
     },
     colorMatch() {
       let matchHue = this.selections[this.activeIndex].hue
@@ -492,15 +403,6 @@ export default {
       selection.hue = this.randomNumber(0, 359)
       selection.saturation = this.randomNumber(0,100)
       selection.lightness = this.randomNumber(15,100)
-      this.init()
-    },
-    setOpen(e){
-      this.expandedMenu = e;
-    },
-    swatchPick(e){
-      let parsedHSL = e.slice(4, -1).replaceAll(',', '').replaceAll('%', '');
-      let hslArray = parsedHSL.split(' ')
-      this.assignHSL(hslArray, this.selections[this.activeIndex])
       this.init()
     },
     setLightness(e){
@@ -563,12 +465,6 @@ export default {
         selection.scaleHeight = 500;
       }
       this.init()
-    },
-    assignHSL(array, selection){
-      selection.color = true;
-      selection.hue = array[0]
-      selection.saturation = array[1]
-      selection.lightness = array[2]
     },
     resetActive(){
       this.selections[this.activeIndex].left = 0;
