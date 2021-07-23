@@ -1,26 +1,47 @@
 <template>
-    <v-card min-width="500" min-height="500" max-height="500" max-width="500">
-         <canvas id="canvas" class="mb-3 border" width="500" height="500"></canvas>
-         <canvas class="d-none" width="500" height="500" id="stageCanvas"></canvas>
+    <v-card :min-width="canvasSize" :min-height="canvasSize" :max-height="canvasSize" :max-width="canvasSize">
+         <canvas id="canvas" class="mb-3 border" :width="canvasSize" :height="canvasSize"></canvas>
+         <canvas class="d-none" :width="canvasSize" :height="canvasSize" id="stageCanvas"></canvas>
     </v-card>
 </template>
 
 <script>
 import presets from '@/assets/avatarPresets/preset.js'
-import { mapState, mapMutations } from 'vuex'
+import { mapState, mapMutations, mapGetters } from 'vuex'
 
     export default {
         name: 'AvatarCanvas',
+        props: {
+          canvasSize: {
+            type: Number,
+            default:500,
+          }
+        },
         data() {
     return {
       presets,
       imagesToLoad:0,
-      characterBuilder: []
+      characterBuilder: [],
+      renderOrder: [
+        'hair-back',
+        'body',
+        'eyes',
+        'nose',
+        'mouth',
+        'ears',
+        'brows',
+        'hair-front',
+        'extras',
+        'clothes',
+      ]
     }
   },
   computed: {
     ...mapState('avatarCanvas', [
       'characterJSON'
+    ]),
+    ...mapGetters('avatarCanvas', [
+      'character_selections'
     ]),
     canvas () {
       return document.getElementById('canvas');
@@ -35,6 +56,11 @@ import { mapState, mapMutations } from 'vuex'
       return this.stageCanvas.getContext('2d');
     },
   },
+  watch: {
+      character_selections(oldValue, newValue) {
+        this.init()
+      }
+    },
   methods:{
     ...mapMutations('avatarCanvas', [
       'REPLACE_CHARACTER_JSON',
@@ -48,19 +74,25 @@ import { mapState, mapMutations } from 'vuex'
             this.imagesToLoad += 2
           }
         }
-        this.characterJSON.forEach((selection, index) => {
-          this.characterBuilder.push({})
-          if(selection.which > -1){
+        this.characterBuilder = []
+        this.renderOrder.forEach((selection, index) => {
+          this.characterBuilder[index] = {name: selection, flatImg: null, lineImg: null}
+          const jsonIndex = this.characterJSON.findIndex(char => char.name === selection)
+          const character = this.characterJSON[jsonIndex]
+          const which = character.which
+          let flat = character.sprites.flat[which]
+          const line = character.sprites.line[which] 
 
+          if(character.which > -1){
               for(let i = 0; i < 2; i++){
-                let sources = [selection.sprites.flat[selection.which], selection.sprites.line[selection.which]];
+                let sources = [flat, line];
                 let targets = ['flatImg', 'lineImg'];
-                img = new Image(500,500);
+                img = new Image(1000, 1000);
                 this.characterBuilder[index][targets[i]] = img
                 img.onload = () => {
                   this.imagesToLoad--;
                   if (this.imagesToLoad <= 0) {
-                    this.drawImages();
+                    this.renderCharacter();
                   }
                 }
                 img.onerror = () => {
@@ -76,36 +108,54 @@ import { mapState, mapMutations } from 'vuex'
         }
       })
     },
-    drawImages(){
-      this.ctx.clearRect(0,0,500,500) //clear the display canvas
-      this.stagectx.clearRect(0,0,500,500) //clear the staging canvas
-      console.log(this.characterBuilder)
-
-      for(let current of this.characterBuilder) { //loop through all characterJSON  
-      console.log(current)               
+    clearCanvas(context) {
+      context.forEach((item) => {
+        item.clearRect(0,0,this.canvasSize,this.canvasSize) //clear the staging canvas
+      })
+    },
+    drawRectangle(context) {
+      context.canvas.fillRect(0, 0, this.canvasSize, this.canvasSize);
+    },
+    drawImage(context) {
+      context.canvas.drawImage(context.image, 0, 0, this.canvasSize, this.canvasSize);
+    },
+    setCompositeOperation(context) {
+       context.canvas.globalCompositeOperation = context.comp;
+    },
+    renderCharacter(){
+      this.clearCanvas([this.ctx, this.stagectx]) 
+      for(let current of this.characterBuilder) { //loop through all options in characterBuilder
             if(current.flatImg){
+              const image = current.flatImg
+             
+              // set source, draw flat image
+              this.setCompositeOperation({canvas: this.stagectx, comp: 'source-over'})
+              this.drawImage({canvas: this.stagectx, image})
 
-              this.stagectx.globalCompositeOperation = "source-over";
-              this.stagectx.drawImage(current.flatImg, 0, 0, 500, 500, 0, 0, 500, 500);
+              // set mode, set composite mode
+              // let mode = current.lightness <= 50 ? 'darken' : 'lighten' 
+              // this.setCompositeOperation({canvas: this.stagectx, comp: mode})
 
-              let mode = current.lightness <= 50 ? 'darken' : 'lighten' 
-              this.stagectx.globalCompositeOperation = mode;
-              this.stagectx.fillStyle = `hsl(0, 0%, ${current.lightness}%)`;
-              this.stagectx.fillRect(0, 0, 500, 500);
+              // set lightness/darkness fill style
+              // this.stagectx.fillStyle = `hsl(0, 0%, ${current.lightness}%)`;
+              // this.drawRectangle({canvas: this.stagectx})
               
-              this.stagectx.globalCompositeOperation = "destination-in";
-              this.stagectx.drawImage(current.flatImg, 0, 0, 500, 500, 0, 0, 500, 500);
+              this.setCompositeOperation({canvas: this.stagectx, comp: 'destination-in'})
+              this.drawImage({canvas: this.stagectx, image})
             }
     
             if(current.lineImg) {
-              this.stagectx.globalCompositeOperation = "source-over";
-              this.stagectx.drawImage(current.lineImg, 0, 0, 500, 500, 0, 0, 500, 500);
+              const image = current.lineImg
+              this.setCompositeOperation({canvas: this.stagectx, comp: 'source-over'})
+              this.drawImage({canvas: this.stagectx, image})
             }
-    
+
             this.stagectx.restore();
-          
-        this.ctx.globalCompositeOperation = "source-over";
-        this.ctx.drawImage(this.stageCanvas, 0, 0, 500, 500, 0, 0, 500, 500);
+        
+        if(current.flatImg || current.lineImg) {
+          this.setCompositeOperation({canvas: this.ctx, comp: 'source-over'})
+          this.drawImage({canvas: this.ctx, image: this.stageCanvas})
+        }
       }
     },
     randomNumber(min,max){
@@ -130,7 +180,7 @@ import { mapState, mapMutations } from 'vuex'
         this.POPULATE_SPRITE_ARRAY({ index: index, arrayName: array, loadedPaths: into})
       }
     })
-    this.init();
+    this.init()
   }
     }
 </script>

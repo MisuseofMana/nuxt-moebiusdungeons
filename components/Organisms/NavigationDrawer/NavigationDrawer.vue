@@ -1,25 +1,21 @@
 <template>
      <v-sheet
-    height="400"
+    color="black"
     class="overflow-hidden"
-    style="position: relative;"
   >
-    <v-container>
+    <v-container class="fill-height">
       <v-row
-        align="start"
+        align="center"
         justify="start"
       >
         <v-list-item>
-        <v-list-item-avatar>
-          User Icon
-        </v-list-item-avatar>
-
         <v-list-item-content>
-          <v-list-item-title class="text-uppercase">{{ username }}</v-list-item-title>
+          <v-list-item-title class="text-uppercase text-body-1 white--text">{{ username }}</v-list-item-title>
+          <v-list-item-title class="text-uppercase text-body-2 white--text">SCORE: {{ score }}</v-list-item-title>
         </v-list-item-content>
 
         <v-list-item-icon>
-          <v-icon @click.stop="drawer = !drawer">mdi-cog</v-icon>
+          <v-icon color="white" @click.stop="drawer = !drawer">mdi-cog</v-icon>
         </v-list-item-icon>
 
       </v-list-item>
@@ -30,8 +26,20 @@
       v-model="drawer"
       absolute
       temporary
+      class="justify-center align-center d-flex text-center"
     >
-      STUFF GOES HERE
+          <div class="my-2 d-flex flex-column justify-center align-center">
+            <div class="text-uppercase text-h6 mb-2">{{ username }}</div>
+            <AvatarCanvas :canvasSize="150"/>
+          </div>
+
+          <v-divider></v-divider>
+          <div class="my-2">
+            <div class="mb-2">SETTINGS:</div>
+            <v-btn>SAVE GAME</v-btn>
+          </div>
+
+
     </v-navigation-drawer>
   </v-sheet>
 </template>
@@ -49,6 +57,10 @@
                 type: String,
                 default:'Wanderer',
             },
+            score: {
+                type: Number,
+                default: 0
+            }
         }
     }
 </script>
