@@ -10,23 +10,23 @@
 </template>
 
 <script>
-    export default {
-        name:'SigilImage',
-        props: {
-            width:{
-                type: Number,
-                default:100,
-            },
-            height:{
-                type: Number,
-                default:100,
-            },
-            src:{
-                type: 'string',
-                default:'monster',
-            }
-        }
-    }
+export default {
+	name:'SigilImage',
+	props: {
+		width:{
+			type: Number,
+			default:100,
+		},
+		height:{
+			type: Number,
+			default:100,
+		},
+		src:{
+			type: String,
+			default:'monster',
+		}
+	}
+}
 </script>
 
 <style lang="scss" scoped>
