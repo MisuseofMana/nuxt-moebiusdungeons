@@ -2,7 +2,7 @@
 <div class="d-flex">
     <v-card class="size d-flex flex-column align-center justify-center" >
         <v-img 
-            :src="require(`@/assets/images/ui/healthicon.png`)"
+            :src="require(`@/assets/images/ui/health.png`)"
             height="70"
             width="70"
             max-height="70"
@@ -67,36 +67,36 @@
 </template>
 
 <script>
-    export default {
-        name:'StatBlock',
-        props: {
-            attackType: {
-                type: String,
-                default: 'physical'
-            },
-            armorType: {
-                type: String,
-                default: 'physical'
-            },
-            attack: {
-                type: Number,
-                default: 0,
-            },
-            armor: {
-                type: Number,
-                default: 0,
-            },
-            health: {
-                type: Number,
-                default: 0,
-            },
-            coins: {
-                type: Number,
-                default: 0,
-            },
+export default {
+	name:'StatBlock',
+	props: {
+		attackType: {
+			type: String,
+			default: 'physical'
+		},
+		armorType: {
+			type: String,
+			default: 'physical'
+		},
+		attack: {
+			type: Number,
+			default: 0,
+		},
+		armor: {
+			type: Number,
+			default: 0,
+		},
+		health: {
+			type: Number,
+			default: 0,
+		},
+		coins: {
+			type: Number,
+			default: 0,
+		},
 
-        }
-    }
+	}
+}
 </script>
 
 <style scoped>
