@@ -1,35 +1,45 @@
 <template>
     <v-row class="inventoryGrid">
-        <v-col cols="4" class="pa-0 mb-1" v-for="(items, index) in inventory" :key="items.item + index">
-            <v-card :hover="items.item !== null " :disabled="items.item === null" :flat="items.item === null" :color="items.item ? 'white': 'black' " min-width="68" min-height="68" max-height="68" max-width="68" class="pa-0 d-flex text-center justify-center align-center">
-                <v-img :src="items.item" />
-            </v-card>
+        <v-col cols="4" class="pa-0 mb-1" v-for="(items, index) in inventory" :key="items.icon + index">
+            <v-hover>
+                <template v-slot:default="{ hover }">
+                    <v-card :elevation="hover ? 24 : 6" :hover="items.item !== null " :disabled="items.item === null" :flat="items.item === null" color="white" min-width="68" min-height="68" max-height="68" max-width="68" class="pa-0 d-flex text-center justify-center align-center">
+                        <v-img v-if="items.icon !== null" :src="require(`@/assets/images/items/${items.icon}`)" />
+                    </v-card>
+                </template>
+            </v-hover>
         </v-col>
     </v-row>
 </template>
 
 <script>
 import clericItems from '@/mocks/items/clericItems.mock.js'
+import graverobberItems from '@/mocks/items/graverobberItems.mock.js'
+import merchantItems from '@/mocks/items/merchantItems.mock.js'
+import witchItems from '@/mocks/items/witchItems.mock.js'
 
-    export default {
-        name: 'InventoryGrid',
-        props: {
-            inventory: {
-                type: Array,
-                default: () => 
-                    [
-                        {item: clericItems.minorHeal.icon}, {item: clericItems.fortune.icon}, {item: null},
-                        {item: null}, {item: null}, {item: null},
-                        {item: null}, {item: null}, {item: clericItems.greaterHeal.icon},
-                    ]
-            } 
-        },
-    }
+export default {
+	name: 'InventoryGrid',
+	props: {
+		inventory: {
+			type: Array,
+			default: () => 
+				[
+					{icon: clericItems.minorHeal.iconPath}, {icon: clericItems.fortune.iconPath}, {icon: witchItems.ochreElixer.iconPath},
+					{icon: graverobberItems.detrimentBangle.iconPath}, {icon: merchantItems.etchingRod.iconPath}, {icon: merchantItems.armorKit.iconPath},
+					{icon: witchItems.ancientRune.iconPath}, {icon: graverobberItems.dessicatedDoll.iconPath}, {icon: clericItems.greaterHeal.iconPath},
+				]
+		} 
+	},
+	mounted() {
+		console.log(this.items)
+	}
+}
 </script>
 
 <style scoped>
     .inventoryGrid {
-        width:210px;
-        height:200px;
+        width:230px;
+        height:230px;
     }
 </style>
