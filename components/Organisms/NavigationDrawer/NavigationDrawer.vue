@@ -28,15 +28,27 @@
       temporary
       class="justify-center align-center d-flex text-center"
     >
-          <div class="my-2 d-flex flex-column justify-center align-center">
+          <div class="mt-2 mb-5 d-flex flex-column justify-center align-center">
             <div class="text-uppercase text-h6 mb-2">{{ username }}</div>
             <AvatarCanvas :canvasSize="150"/>
           </div>
 
-          <v-divider></v-divider>
-          <div class="my-2">
-            <div class="mb-2">SETTINGS:</div>
+          <h5 class="text-body-1 mb-2">
+            OPTIONS
+          </h5>
+
+          <div class="mb-5">
             <v-btn>SAVE GAME</v-btn>
+          </div>
+
+          <div class="mb-5">
+            <v-btn>TOGGLE TOOLTIPS</v-btn>
+          </div>
+
+          <v-divider></v-divider>
+
+          <div class="mt-5">
+            <v-btn>SIGN OUT</v-btn>
           </div>
 
 
@@ -45,24 +57,24 @@
 </template>
 
 <script>
-    export default {
-        name:'NavigationDrawer',
-        data() {
-          return {
-            drawer: null,
-          }
-        },
-        props: {
-            username:{
-                type: String,
-                default:'Wanderer',
-            },
-            score: {
-                type: Number,
-                default: 0
-            }
-        }
-    }
+export default {
+	name:'NavigationDrawer',
+	data() {
+		return {
+			drawer: null,
+		}
+	},
+	props: {
+		username:{
+			type: String,
+			default:'Wanderer',
+		},
+		score: {
+			type: Number,
+			default: 0
+		}
+	}
+}
 </script>
 
 <style lang="scss" scoped>
