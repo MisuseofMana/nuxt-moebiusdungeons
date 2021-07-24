@@ -19,44 +19,44 @@
 <script>
 import { mapMutations, mapState, mapActions } from 'vuex'
 
-    export default {
-        name: 'AvatarEditorCard',
-        props: {
-            editType: {
-                type: String,
-                default: 'body'
-            },
-            index: {
-                type: Number,
-                default: 0
-            },
-        },
-        computed: {
-            ...mapState('avatarCanvas', {
-                characterOptions: state => state.characterJSON
-            }),
-            selected() {
-                return this.characterOptions[this.index].which
-            }
-        },
-        methods: {
-            ...mapMutations('avatarCanvas', [
-                'INCREMENT_CHARACTER_OPTIONS',
-                'DECREMENT_CHARACTER_OPTIONS',
-            ]),
-            ...mapActions('avatarCanvas', [
-                'characterOptionUp',
-                'characterOptionDown',
-            ]),
-            decrement() {
-                this.characterOptionDown(this.index)
-            },
-            increment() {
-                this.characterOptionUp(this.index)
+export default {
+	name: 'AvatarEditorCard',
+	props: {
+		editType: {
+			type: String,
+			default: 'body'
+		},
+		index: {
+			type: Number,
+			default: 0
+		},
+	},
+	computed: {
+		...mapState('avatarCanvas', {
+			characterOptions: state => state.characterJSON
+		}),
+		selected() {
+			return this.characterOptions[this.index].which
+		}
+	},
+	methods: {
+		...mapMutations('avatarCanvas', [
+			'INCREMENT_CHARACTER_OPTIONS',
+			'DECREMENT_CHARACTER_OPTIONS',
+		]),
+		...mapActions('avatarCanvas', [
+			'characterOptionUp',
+			'characterOptionDown',
+		]),
+		decrement() {
+			this.characterOptionDown(this.index)
+		},
+		increment() {
+			this.characterOptionUp(this.index)
 
-            }
-        }
-    }
+		}
+	}
+}
 </script>
 
 <style scoped>
