@@ -26,6 +26,10 @@
     "@mdi/font": "^5.9.55",
     "@nuxtjs/storybook": "^4.0.4",
     "@nuxtjs/vuetify": "^1.12.1",
-    "postcss": "^8.3.5"
+    "eslint": "^7.31.0",
+    "eslint-plugin-vue": "^7.14.0",
+    "postcss": "^8.3.5",
+    "prettier": "2.3.2",
+    "stylelint": "^13.13.1"
   }
 }
