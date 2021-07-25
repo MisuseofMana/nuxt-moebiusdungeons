@@ -1,7 +1,7 @@
 <template>
 	<GameHelper tip="Dungeon Help">
 		<v-container>
-			<v-row>"
+			<v-row>
 				<v-col cols="4">
 					<div class="text-left">
 						<h5 class="text-h5 mb-5">Stats</h5>
