@@ -13,7 +13,7 @@
             <div class="size animateRank" :class="rarityOverlay"></div>
             </v-img>
             <v-fade-transition>
-                <v-overlay v-if="hover" :key="taglineOverlay + who.image" opacity=".5" :absolute="true" :value="true" class="white--text text-body-1 pa-5 text-center text-uppercase">
+                <v-overlay v-if="hover" :key="'taglineOverlay' + who.image" opacity=".5" :absolute="true" :value="true" class="white--text text-body-1 pa-5 text-center text-uppercase">
                     <div class="shadow">
                         {{ who.tagline }}
                     </div>
@@ -27,36 +27,36 @@
 <script>
 import characters from '@/components/Molecules/CharacterImage/CharacterImage.mock.js'
 
-    export default {
-        name: 'CharacterImage',
-        props: {
-            who: {
-                type: Object,
-                default: () => characters['swordsman']
-            },
-            rarity: {
-                type: String,
-                default: 'normal'
-            },
-        },
-        data() {
-            return {
-                hover: false,
-                rarityLookup: {
-                    normal: '',
-                    virulent: 'virulentOverlay',
-                    fearsome: 'fearsomeOverlay',
-                    bloodless: 'bloodlessOverlay',
-                    flawless: 'flawlessOverlay',
-                }
-            }
-        },
-        computed: {
-            rarityOverlay() {
-                return this.rarityLookup[this.rarity]
-            }
-        }
-    }
+export default {
+	name: 'CharacterImage',
+	props: {
+		who: {
+			type: Object,
+			default: () => characters['swordsman']
+		},
+		rarity: {
+			type: String,
+			default: 'normal'
+		},
+	},
+	data() {
+		return {
+			hover: false,
+			rarityLookup: {
+				normal: '',
+				virulent: 'virulentOverlay',
+				fearsome: 'fearsomeOverlay',
+				bloodless: 'bloodlessOverlay',
+				flawless: 'flawlessOverlay',
+			}
+		}
+	},
+	computed: {
+		rarityOverlay() {
+			return this.rarityLookup[this.rarity]
+		}
+	}
+}
 </script>
 
 <style lang="scss" scoped>

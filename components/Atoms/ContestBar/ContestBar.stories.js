@@ -1,5 +1,5 @@
 export default {
-    title: 'Atoms/Contest Bar'
-  }
+	title: 'Atoms/Contest Bar'
+}
   
-  export const ContestBar = () => '<ContestBar />'
+export const ContestBar = () => '<ContestBar />'
