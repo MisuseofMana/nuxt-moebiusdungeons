@@ -1,10 +1,10 @@
 <template>
     <v-row class="inventoryGrid">
-        <v-col cols="4" class="pa-0 mb-1" v-for="(items, index) in inventory" :key="items.icon + index">
+        <v-col cols="4" class="pa-0 mb-1 d-flex align-center justify-center" v-for="(items, index) in inventory" :key="items.icon + index">
             <v-hover>
                 <template v-slot:default="{ hover }">
                     <v-card :elevation="hover ? 24 : 6" :hover="items.item !== null " :disabled="items.item === null" :flat="items.item === null" color="white" min-width="68" min-height="68" max-height="68" max-width="68" class="pa-0 d-flex text-center justify-center align-center">
-                        <v-img v-if="items.icon !== null" :src="require(`@/assets/images/items/${items.icon}`)" />
+                        <v-img max-width="60" min-width="60" max-height="60" min-height="60" v-if="items.icon !== null" :src="require(`@/assets/images/items/${items.icon}`)" />
                     </v-card>
                 </template>
             </v-hover>

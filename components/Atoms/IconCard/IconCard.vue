@@ -1,12 +1,14 @@
 <template>
     <div>
-        <v-card color="white" width="60" height="60" class="size d-flex flex-column align-center justify-center" >
+        <v-card color="white" width="60" height="60" min-height="60" min-width="60" class="size d-flex flex-column align-center justify-center mr-0" >
             <v-img 
                 :src="require(`@/assets/images/ui/${icon}.png`)"
                 height="60"
                 width="60"
                 max-height="60"
                 max-width="60"
+                min-height="60"
+                min-width="60"
             >
             </v-img>
                 <v-overlay :opacity="opacity" :color="color" :absolute="true" :value="true" class="text-h6 text-center">
@@ -62,7 +64,7 @@ export default {
 
 <style lang="scss" scoped>
 .black-shadow {
-    text-shadow:black 0px 0px 10px;
+    text-shadow:black 0 0 10px;
 }
 
 .red-shadow {

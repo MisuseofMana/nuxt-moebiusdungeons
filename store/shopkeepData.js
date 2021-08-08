@@ -12,6 +12,17 @@ export const state = () => ({
 			cantBuy:['notEnough', 'notEnough2', 'moreCoin', 'moreCoin2', ],
 			bigBuy:['byAmara', 'byAmara2']
 		},
+		scribe: {
+			description: 'A young boy raised by the librarians and mages of Eyien. He sells sigils and wards which can alter your essence.',
+			saying:'Hey! Wanna try drawing some sigils?',
+			shopTitle: 'Are you a kingloyal? That\'s so cool!',
+			// welcome:['hello', 'hello2', 'welcome', 'welcome2',],
+			// welcomeBack:['youreBack', 'youreBack2' ],
+			// goodbye:['goodbye', 'goodbye2', 'beCareful', 'beCareful2', 'seeYouSoon', 'seeYouSoon2', 'staySafe', 'staySafe2' ],
+			// thankYou:['feelingBetter', 'feelingBetter2', 'thanks', 'thanks2', 'thankYou', 'thankYou2', ],
+			// cantBuy:['notEnough', 'notEnough2', 'moreCoin', 'moreCoin2', ],
+			// bigBuy:['byAmara', 'byAmara2']
+		},
 		graverobber: {
 			description: 'An untrustworthy soul. Provides items that come with a deeper cost than just simple coins. Don\'t get him wrong, he\'s happy to take your coin too.',
 			saying:'Trust me, nothing I sell is cursed.',
@@ -46,9 +57,5 @@ export const state = () => ({
 			bigBuy:['interestingChoice', 'interestingChoice2', ]
 		}
 	},
-	shopLoaded: undefined,
-	info: {},
-	shopChoice: [],
-	inventory: [],
-	visited:[],
 })
+

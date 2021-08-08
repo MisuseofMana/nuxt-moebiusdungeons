@@ -26,23 +26,23 @@
 </template>
 
 <script>
-    export default {
-        name:'MettleGauge',
-        props: {
-            mettleType: {
-                type: String,
-                default: 'swordsman'
-            },
-            totalMettle: {
-                type: Number,
-                default: 3
-            },
-            availableMettle: {
-                type: Number,
-                default: 1
-            },
-        }
-    }
+export default {
+	name:'MettleGauge',
+	props: {
+		mettleType: {
+			type: String,
+			default: 'swordsman'
+		},
+		totalMettle: {
+			type: Number,
+			default: 3
+		},
+		availableMettle: {
+			type: Number,
+			default: 1
+		},
+	}
+}
 </script>
 
 <style lang="scss" scoped>

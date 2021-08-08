@@ -6,18 +6,20 @@
             :height="75"
             class="mr-2"
         />
-        <div class="text-h2">{{ phase }}</div>
+        <div class="text-h2">{{ title }}</div>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
 	name: 'SceneHeading',
 	props: {
 		type: String,
 		phase: {
 			default: 'Dungeon Phase'
-		}
+		},
 	},
 	data() {
 		return {
@@ -30,13 +32,18 @@ export default {
 		}
 	},
 	computed: {
+		...mapState('gameData', [
+			'location'
+		]),
 		imageSource() {
 			return this.imageLookup[this.phase]
+		},
+		title() {
+			if(this.phase === 'Dungeon Phase') {
+				return this.location
+			}
+			return this.imageSource
 		}
 	}
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

@@ -22,21 +22,17 @@
 <script>
 import { mapState } from 'vuex'
 
-    export default {
-        name:'AvatarEditor',
-        data() {
-          return {
+export default {
+	name:'AvatarEditor',
+	data() {
+		return {
             
-          }
-        },
-        computed: {
-          ...mapState('avatarCanvas', [
-            'characterJSON'
-          ])
-        }
-    }
+		}
+	},
+	computed: {
+		...mapState('avatarCanvas', [
+			'characterJSON'
+		])
+	}
+}
 </script>
-
-<style lang="scss" scoped>
-
-</style>

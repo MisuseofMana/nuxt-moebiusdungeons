@@ -7,21 +7,17 @@
 </template>
 
 <script>
-    export default {
-        name:'InputField',
-        props: {
-            label: {
-                type: String,
-                default: 'Default',
-            },
-            counter: {
-                type: Number,
-                default: 15,
-            }
-        }
-    }
+export default {
+	name:'InputField',
+	props: {
+		label: {
+			type: String,
+			default: 'Default',
+		},
+		counter: {
+			type: Number,
+			default: 15,
+		}
+	}
+}
 </script>
-
-<style lang="scss" scoped>
-
-</style>

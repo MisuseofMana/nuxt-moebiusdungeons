@@ -1,20 +1,33 @@
 <template>
-     <div class="text-center">
-    <v-btn
-      color="primary white--text"
-      @click="overlay = !overlay"
-    >
-      {{ tip }}
-    </v-btn>
+    <div class="text-center">
+      <v-btn
+        color="success white--text"
+        @click="overlay = !overlay"
+      >
+        {{ tip }}
+      </v-btn>
 
-    <v-overlay color="white" opacity=".9" :value="overlay">
-      <v-card class="mx-5 pa-5 overflow" color="white black--text" height="90vh">
-      <slot></slot>
-      <div class="cursorPointer">
-        <v-btn @click="overlay = !overlay">Understood</v-btn>
-      </div>
-      </v-card>
-    </v-overlay>
+      <v-overlay z-index="999" color="white" opacity=".8" :value="overlay">
+        <v-card class="overflow" color="white black--text" height="75vh">
+          <v-row no-gutters justify="end" class="pt-10 px-10">
+            <v-col cols="1" class="d-flex justify-end">
+              <v-img class="cursorPointer" @click="overlay = !overlay" :src="require('@/assets/images/ui/redX.png')" max-height="40" max-width="40"/>
+            </v-col>
+          </v-row>
+
+          <v-row no-gutters class="px-10 mt-0">
+            <v-col>
+              <slot></slot>
+            </v-col>
+          </v-row>
+
+          <v-row justify="end" class="pb-10">
+            <v-col cols="2">
+              <v-btn color="red" @click="overlay = !overlay">Close Overlay</v-btn>
+            </v-col>
+          </v-row>
+        </v-card>
+      </v-overlay>
   </div>
 </template>
 
@@ -40,5 +53,6 @@ export default {
 
 .overflow {
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 </style>

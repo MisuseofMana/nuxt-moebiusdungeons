@@ -50,8 +50,6 @@
           <div class="mt-5">
             <v-btn>SIGN OUT</v-btn>
           </div>
-
-
     </v-navigation-drawer>
   </v-sheet>
 </template>
@@ -76,7 +74,3 @@ export default {
 	}
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

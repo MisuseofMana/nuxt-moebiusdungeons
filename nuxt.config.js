@@ -3,7 +3,6 @@ export default {
 		// Simple usage
 		'@nuxtjs/vuetify',
 		'@nuxtjs/stylelint-module',
-		'@nuxtjs/eslint-module',
 	],
 	target: 'static',
 	components: {
@@ -11,10 +10,13 @@ export default {
 			'@/components/Atoms',
 			'@/components/Molecules',
 			'@/components/Organisms',
+			'@/components/PageComponents',
+			'@/components/Helpers',
 		]
 	},
 	css: [
-		'@/assets/css/transitions.css'
+		'@/assets/css/transitions.css',
+		'@/assets/css/scrollbar.css',
 	],
 	plugins: ['@/plugins/vuetify.js'],
 	head: {
@@ -40,5 +42,5 @@ export default {
 		customVariables: ['@/assets/variables.scss'],
 		treeShake: true,
 		defaultAssets: false,
-	}
+	},
 }

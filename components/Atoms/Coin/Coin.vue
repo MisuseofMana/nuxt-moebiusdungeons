@@ -13,15 +13,15 @@
 </template>
 
 <script>
-    export default {
-        name: 'Coin',
-        props: {
-            wealth: {
-                type: Number,
-                default: 0,
-            }
-        },
-    }
+export default {
+	name: 'Coin',
+	props: {
+		wealth: {
+			type: Number,
+			default: 0,
+		}
+	},
+}
 </script>
 
 <style lang="scss" scoped>
@@ -31,7 +31,7 @@
 }
 
 .shadow {
-    text-shadow:black -1px 0px 5px;
+    text-shadow:black -1px 0 5px;
 }
 
 </style>

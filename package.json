@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "storybook": "npx nuxt storybook -s ./assets -p 7001"
+    "storybook": "npx nuxt storybook -s ./assets -p 7001",
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "generate": "nuxt generate",
+    "start": "nuxt start"
   },
   "repository": {
     "type": "git",
@@ -27,14 +31,18 @@
     "@babel/eslint-parser": "^7.14.7",
     "@mdi/font": "^5.9.55",
     "@nuxtjs/storybook": "^4.0.4",
+    "@nuxtjs/stylelint-module": "^4.0.0",
     "@nuxtjs/vuetify": "^1.12.1",
-    "eslint": "^7.31.0",
+    "@typescript-eslint/eslint-plugin": "^4.28.5",
+    "@typescript-eslint/parser": "^4.28.5",
+    "eslint": "^7.32.0",
+    "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "eslint-plugin-vue": "^7.14.0",
-    "eslint-webpack-plugin": "^3.0.1",
-    "postcss": "^8.3.5",
+    "eslint-plugin-vue": "^7.15.0",
     "prettier": "^2.3.2",
-    "stylelint": "^13.13.1"
+    "stylelint": "^13.13.1",
+    "stylelint-config-prettier": "^8.0.2",
+    "stylelint-config-standard": "^22.0.0"
   }
 }

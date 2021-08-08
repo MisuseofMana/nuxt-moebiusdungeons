@@ -1,8 +1,8 @@
 <template>
-    <v-card :min-width="canvasSize" :min-height="canvasSize" :max-height="canvasSize" :max-width="canvasSize">
+    <v-sheet elevation="2" rounded :min-width="canvasSize" :min-height="canvasSize" :max-height="canvasSize" :max-width="canvasSize">
          <canvas id="canvas" class="mb-3 border" :width="canvasSize" :height="canvasSize"></canvas>
          <canvas class="d-none" :width="canvasSize" :height="canvasSize" id="stageCanvas"></canvas>
-    </v-card>
+    </v-sheet>
 </template>
 
 <script>
@@ -163,9 +163,6 @@ export default {
 		},
 	},
 	mounted(){
-		let randomPreset = this.presets[this.randomNumber(0, this.presets.length - 1 )]
-		this.REPLACE_CHARACTER_JSON(randomPreset)
-
 		//add snipped image paths to appropriate arrays in the characterJSON array
 		this.characterJSON.forEach((selection, index) => { // for every object in the array
 			for (let array in selection.sprites) {

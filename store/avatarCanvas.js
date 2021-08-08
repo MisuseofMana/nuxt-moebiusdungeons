@@ -114,9 +114,6 @@ export const state = () => ({
 				lineImg:null,
 			},
 			which: 0,
-			top: 0,
-			left: 0,
-			rotation:0,
 			max: 22,
 			lightness:0,
 		},
@@ -129,9 +126,6 @@ export const state = () => ({
 				lineImg:null,
 			},
 			which: 0,
-			top: 2,
-			left: 0,
-			rotation: 0,
 			max: 13,
 			lightness:0
 		},
@@ -139,9 +133,6 @@ export const state = () => ({
 })
   
 export const mutations = {
-	REPLACE_CHARACTER_JSON(state, payload) {
-		state.characterJSON = payload
-	},
 	POPULATE_SPRITE_ARRAY(state, payload) {
 		state.characterJSON[payload.index].sprites[payload.arrayName] = payload.loadedPaths
 	},

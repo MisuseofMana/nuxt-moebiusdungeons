@@ -1,5 +1,5 @@
 export const state = () => ({
-	phase: 'Loading',
+	phase: 'DashboardPage',
 	isEntering: true,
 	helper: false,
 	helperName:'',
@@ -8,7 +8,7 @@ export const state = () => ({
 	turnTailUsed: false,
 	leaderboard:[],
 	debugShow: false,
-	location: 'roads',
+	location: 'caves',
 	locationRanks: {
 		'roads': 1,
 		'caves': 2,
@@ -20,6 +20,9 @@ export const state = () => ({
 })
 
 export const mutations = {
+	CHANGE_PHASE(state, payload) {
+		state.phase = payload
+	},
 	mutate(state, payload) {
 		state[payload.property] = payload.with
 	},

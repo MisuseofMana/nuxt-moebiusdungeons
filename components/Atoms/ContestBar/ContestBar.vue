@@ -1,12 +1,12 @@
 <template>
-    <v-row>
-        <v-col cols=1>
+    <v-row align="center" class="fullWidth">
+        <v-col cols="2" class="mr-0">
             <IconCard />
         </v-col>
-        <v-col cols="10">
+        <v-col cols="8" class="mr-0">
             <v-progress-linear :color="barColor" :value="contest"/>
         </v-col>
-        <v-col cols=1>
+        <v-col cols="2" class="mr-0">
             <IconCard />
         </v-col>
     </v-row>
@@ -77,6 +77,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style scoped>
+.fullWidth {
+	width:100%;
+}
 </style>

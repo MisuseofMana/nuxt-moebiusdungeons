@@ -1,6 +1,6 @@
 export const state = () => ({
 	monster:{
-		class:'bandit',
+		class:'bandits',
 		attackType: 'physical',
 		maxAttack: 10,
 		attack: 10,
