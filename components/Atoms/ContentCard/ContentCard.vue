@@ -1,5 +1,5 @@
 <template>
-    <v-sheet elevation="2" class="d-flex flex-column align-center justify-center" :class="hoverable ? 'hoverable' : ''">
+    <v-sheet height="100%" elevation="2" class="d-flex flex-column align-center justify-center" :class="hoverable ? 'hoverable' : ''">
         <slot>Some Content</slot>
     </v-sheet>
 </template>

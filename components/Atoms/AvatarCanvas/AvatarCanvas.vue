@@ -1,7 +1,7 @@
 <template>
     <v-sheet elevation="2" rounded :min-width="canvasSize" :min-height="canvasSize" :max-height="canvasSize" :max-width="canvasSize">
          <canvas id="canvas" class="mb-3 border" :width="canvasSize" :height="canvasSize"></canvas>
-         <canvas class="d-none" :width="canvasSize" :height="canvasSize" id="stageCanvas"></canvas>
+         <canvas id="stageCanvas" class="d-none" :width="canvasSize" :height="canvasSize" ></canvas>
     </v-sheet>
 </template>
 
@@ -57,8 +57,11 @@ export default {
 		},
 	},
 	watch: {
-		character_selections(oldValue, newValue) {
-			this.init()
+		characterJSON: {
+			handler() {
+				this.init()
+			},
+			deep: true,
 		}
 	},
 	methods:{
@@ -67,29 +70,46 @@ export default {
 			'POPULATE_SPRITE_ARRAY',
 		]),
 		init() {
+			// declare variables
 			this.imagesToLoad = 0
 			var img
+
+			// loop through characterJSON data
 			for(let selection in this.characterJSON){
+				// if 
 				if (selection.which === -1){
 					this.imagesToLoad += 2
 				}
 			}
+			// the empty array to build the character
 			this.characterBuilder = []
-			this.renderOrder.forEach((selection, index) => {
-				this.characterBuilder[index] = {name: selection, flatImg: null, lineImg: null}
-				const jsonIndex = this.characterJSON.findIndex(char => char.name === selection)
-				const character = this.characterJSON[jsonIndex]
-				const which = character.which
-				let flat = character.sprites.flat[which]
-				const line = character.sprites.line[which] 
 
-				if(character.which > -1){
+			this.renderOrder.forEach((selection, index) => {
+				// set characterBuilder data for item in render order in array
+				this.characterBuilder[index] = {name: selection, flatImg: null, lineImg: null}
+				// get index in JSON of sprite being rendered
+				const jsonIndex = this.characterJSON.findIndex(sprite => sprite.name === selection)
+				const spriteJSON = this.characterJSON[jsonIndex]
+				const which = spriteJSON.which
+				
+				// get sprite names from JSON
+				const flat = spriteJSON.sprites.flat[which]
+				const line = spriteJSON.sprites.line[which] 
+
+				// if sprite is selected
+				if(which > -1){
 					for(let i = 0; i < 2; i++){
+						// set sources
 						let sources = [flat, line]
 						let targets = ['flatImg', 'lineImg']
-						img = new Image(1000, 1000)
+
+						// new image at 500, 500
+						img = new Image(500, 500)
+
+						// set character builder at index to new image
 						this.characterBuilder[index][targets[i]] = img
 						img.onload = () => {
+							// when all images are loaded render character
 							this.imagesToLoad--
 							if (this.imagesToLoad <= 0) {
 								this.renderCharacter()
@@ -110,7 +130,7 @@ export default {
 		},
 		clearCanvas(context) {
 			context.forEach((item) => {
-				item.clearRect(0,0,this.canvasSize,this.canvasSize) //clear the staging canvas
+				item.clearRect(0,0,this.canvasSize,this.canvasSize) // clear the staging canvas
 			})
 		},
 		drawRectangle(context) {
@@ -125,21 +145,37 @@ export default {
 		renderCharacter(){
 			this.clearCanvas([this.ctx, this.stagectx]) 
 			for(let current of this.characterBuilder) { //loop through all options in characterBuilder
+				
 				if(current.flatImg){
 					const image = current.flatImg
              
 					// set source, draw flat image
 					this.setCompositeOperation({canvas: this.stagectx, comp: 'source-over'})
 					this.drawImage({canvas: this.stagectx, image})
+					
+					const skinSprites = ['body', 'ears', 'nose']
+					const hairSprites = ['hair-front', 'hair-back', 'brows']
+					const clothesSprites = ['clothes']
 
-					// set mode, set composite mode
-					// let mode = current.lightness <= 50 ? 'darken' : 'lighten' 
-					// this.setCompositeOperation({canvas: this.stagectx, comp: mode})
+					const toneList = [...skinSprites, ...hairSprites, ...clothesSprites]
 
-					// set lightness/darkness fill style
-					// this.stagectx.fillStyle = `hsl(0, 0%, ${current.lightness}%)`;
-					// this.drawRectangle({canvas: this.stagectx})
-              
+					if(toneList.includes(current.name)) {
+						let toneTarget
+						if(skinSprites.includes(current.name)) toneTarget = 0
+						if(hairSprites.includes(current.name)) toneTarget = 1
+						if(clothesSprites.includes(current.name)) toneTarget = 2
+
+						let tone = this.characterJSON[toneTarget].which === 0 ? 30 : this.characterJSON[toneTarget].which * 10 + 30
+						
+						// set mode, set composite mode
+						let mode = tone <= 60 ? 'darken' : 'lighten' 
+						this.setCompositeOperation({canvas: this.stagectx, comp: mode})
+
+						// set lightness/darkness fill style
+						this.stagectx.fillStyle = `hsl(0, 0%, ${tone}%)`
+						this.drawRectangle({canvas: this.stagectx})
+					}
+					
 					this.setCompositeOperation({canvas: this.stagectx, comp: 'destination-in'})
 					this.drawImage({canvas: this.stagectx, image})
 				}

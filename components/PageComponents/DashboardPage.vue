@@ -18,10 +18,10 @@
                     </ul>
                 </ContentCard>
             </v-col>
-            <v-col cols="4" @click="changePhase('LeaderBoardPage')">
-                <ContentCard hoverable class="pa-4 d-flex flex-column align-center justify-center text-center" height="25vh">
-                    <v-img class="cursorPointer" :src="require('@/assets/images/sigils/traveler.png')" max-height="100" max-width="100"/>
-                    <div class="text-h6">LEADERBOARDS</div>
+            <v-col cols="4" @click="changePhase('CharacterSelectPage')">
+                <ContentCard hoverable>
+                    <v-img class="cursorPointer" :src="require('@/assets/images/sigils/player.png')" max-height="100" max-width="100"/>
+                    <div class="text-h6">Start A New Game</div>
                 </ContentCard>
             </v-col>
             <v-col cols="4">
@@ -41,15 +41,15 @@
                         DISCORD
                     </div>
                     <div class="text-body-1">
-                        Click here to join the Moebius Dungeon discord server where you can talk about the game, suggest improvements and stay in touch with me.
+                        Click here to join the Moebius Dungeon discord server where you can talk about the game, suggest improvements and stay in touch.
                     </div>
                 </ContentCard>
             </v-col>
             <v-spacer></v-spacer>
-            <v-col cols="4" @click="changePhase('CharacterSelectPage')">
-                <ContentCard hoverable>
-                    <v-img class="cursorPointer" :src="require('@/assets/images/sigils/player.png')" max-height="100" max-width="100"/>
-                    <div class="text-h6">Start A New Game</div>
+             <v-col cols="4" @click="changePhase('LeaderBoardPage')">
+                <ContentCard hoverable class="pa-4 d-flex flex-column align-center justify-center text-center" height="25vh">
+                    <v-img class="cursorPointer" :src="require('@/assets/images/sigils/traveler.png')" max-height="100" max-width="100"/>
+                    <div class="text-h6">LEADERBOARDS</div>
                 </ContentCard>
             </v-col>
         </v-row>

@@ -1,7 +1,26 @@
 export const state = () => ({
 	characterJSON: [
 		{
+			name: 'skin-tone',
+			render: false,
+			which:3,
+			max:5,
+		},
+		{
+			name: 'hair-tone',
+			render: false,
+			which:2,
+			max:9,
+		},
+		{
+			name: 'clothes-tone',
+			render: false,
+			which:3,
+			max:9,
+		},
+		{
 			name: 'body',
+			render: true,
 			sprites: {
 				flat:[],
 				flatImg:null,
@@ -9,14 +28,11 @@ export const state = () => ({
 				lineImg:null,
 			},
 			which: 0,
-			top: 2,
-			left: 0,
-			rotation: 0,
 			max: 10,
-			lightness:0
 		},
 		{
 			name:'eyes',
+			render: true,
 			sprites: {
 				flat:[],
 				flatImg:null,
@@ -25,10 +41,10 @@ export const state = () => ({
 			},
 			which: 0,
 			max:32,
-			lightness:0
 		},
 		{
 			name:'brows',
+			render: true,
 			sprites: {
 				flat:[],
 				flatImg:null,
@@ -37,10 +53,10 @@ export const state = () => ({
 			},
 			which: 0,
 			max:18,
-			lightness:0
 		},
 		{
 			name:'nose',
+			render: true,
 			sprites: {
 				flat:[],
 				flatImg:null,
@@ -49,10 +65,10 @@ export const state = () => ({
 			},
 			which: 0,
 			max: 21,
-			lightness:0
 		},
 		{
 			name:'mouth',
+			render: true,
 			sprites: {
 				flat:[],
 				flatImg:null,
@@ -61,10 +77,10 @@ export const state = () => ({
 			},
 			which: 0,
 			max: 23,
-			lightness:0
 		},
 		{
 			name:'ears',
+			render: true,
 			sprites: {
 				flat:[],
 				flatImg:null,
@@ -76,10 +92,10 @@ export const state = () => ({
 			left: 0,
 			rotation: 0,
 			max: 18,
-			lightness:0
 		},
 		{
 			name:'hair-front',
+			render: true,
 			sprites: {
 				flat:[],
 				flatImg:null,
@@ -91,10 +107,10 @@ export const state = () => ({
 			left: 0,
 			rotation: 0,
 			max: 20,
-			lightness:0
 		},
 		{
 			name:'hair-back',
+			render: true,
 			sprites: {
 				flat:[],
 				flatImg: null,
@@ -103,10 +119,10 @@ export const state = () => ({
 			},
 			which: 0,
 			max: 17,
-			lightness:0
 		},
 		{
 			name: 'extras',
+			render: true,
 			sprites: {
 				flat:[],
 				flatImg:null,
@@ -115,10 +131,10 @@ export const state = () => ({
 			},
 			which: 0,
 			max: 22,
-			lightness:0,
 		},
 		{
 			name:'clothes',
+			render: true,
 			sprites: {
 				flat:[],
 				flatImg:null,
@@ -127,7 +143,6 @@ export const state = () => ({
 			},
 			which: 0,
 			max: 13,
-			lightness:0
 		},
 	],
 })
@@ -157,14 +172,14 @@ export const actions = {
 		}
 		// otherwise set which to -1
 		else {
-			commit('SET_CHARACTER_OPTION', {index, set: -1})
+			commit('SET_CHARACTER_OPTION', {index, set: 0})
 		}
 	},
 	characterOptionDown({state, commit}, index) {
 		const itemObject = state.characterJSON[index]
 
 		// if selection number is not -1
-		if (itemObject.which > -1) {
+		if (itemObject.which > 0) {
 			commit('DECREMENT_CHARACTER_OPTION', index)
 		}
 		// otherwise set which to max

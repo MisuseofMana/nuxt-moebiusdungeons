@@ -1,5 +1,5 @@
 export default {
-	title: 'Organisms/Helpers/Character Select Page Helper',
+	title: 'Organisms/Helpers/Character Select Helper',
 }
 
 export const CharacterSelectPageHelper = (argTypes) => ({
