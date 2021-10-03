@@ -4,7 +4,7 @@
         <v-card class="size d-flex flex-column align-center justify-center" >
             <v-img 
                 v-bind="$attrs"
-                :src="require(`@/assets/images/characters/${who.image}.png`)"
+                :src="require(`@/assets/images/characters/${currentCharacter.image}.png`)"
                 height="232"
                 width="200"
                 max-height="232"
@@ -13,9 +13,9 @@
             <div class="size animateRank" :class="rarityOverlay"></div>
             </v-img>
             <v-fade-transition>
-                <v-overlay v-if="hover" :key="'taglineOverlay' + who.image" opacity=".5" :absolute="true" :value="true" class="white--text text-body-1 pa-5 text-center text-uppercase">
+                <v-overlay v-if="hover" :key="'taglineOverlay' + currentCharacter.image" opacity=".5" :absolute="true" :value="true" class="white--text text-body-1 pa-5 text-center text-uppercase">
                     <div class="shadow">
-                        {{ who.tagline }}
+                        {{ currentCharacter.tagline }}
                     </div>
                 </v-overlay>
             </v-fade-transition>
@@ -31,8 +31,8 @@ export default {
 	name: 'CharacterImage',
 	props: {
 		who: {
-			type: Object,
-			default: () => characters['swordsman']
+			type: String,
+			default: 'swordsman'
 		},
 		rarity: {
 			type: String,
@@ -48,12 +48,16 @@ export default {
 				fearsome: 'fearsomeOverlay',
 				bloodless: 'bloodlessOverlay',
 				flawless: 'flawlessOverlay',
-			}
+			},
+			characters,
 		}
 	},
 	computed: {
 		rarityOverlay() {
 			return this.rarityLookup[this.rarity]
+		},
+		currentCharacter() {
+			return this.characters[this.who]
 		}
 	}
 }

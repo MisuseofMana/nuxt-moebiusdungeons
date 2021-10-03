@@ -1,23 +1,32 @@
 <template>
-    <v-text-field
-        :label="label"
-        :counter="counter"
-        outlined
-    ></v-text-field>
+<div>
+	<div class="borders" v-for="(items, index) in logItems" :key="items + index">
+		<div class="text-body-2 py-2 text-center ">
+			{{ items }}
+		</div>
+	</div>
+</div>
 </template>
 
 <script>
 export default {
-	name:'InputField',
+	name:'LogItem',
 	props: {
-		label: {
-			type: String,
-			default: 'Default',
-		},
-		counter: {
-			type: Number,
-			default: 15,
+		logItems: {
+			type: Array,
+			default: () => ['one', 'two','three', 'four', 'five'],
 		}
 	}
 }
 </script>
+
+<style scoped>
+.borders {
+	border-top:1px lightgray solid;
+}
+
+.borders:first-child { 
+	border-top:none;
+	border-bottom:none;
+}
+</style>

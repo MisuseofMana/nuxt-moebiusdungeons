@@ -2,7 +2,7 @@
     <v-container>
 			<v-row no-gutters align="center" class="mb-4">
 				<v-col cols="12" class="d-flex justify-center">
-					<SceneHeading phase="Dungeon Phase"/>
+					<SceneHeading phase="Dungeon Phase" icon="monster"/>
 				</v-col>
 			</v-row>
 			<v-row no-gutters justify="center">

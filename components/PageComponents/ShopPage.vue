@@ -2,7 +2,7 @@
     <v-container>
         <v-row no-gutters align="center" class="mb-4">
             <v-col cols="12" class="d-flex justify-center">
-                <SceneHeading phase="Shop Phase"/>
+                <SceneHeading phase="Shop Phase" icon="shopkeep"/>
             </v-col>
         </v-row>
         

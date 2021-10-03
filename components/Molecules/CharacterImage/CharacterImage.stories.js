@@ -6,9 +6,9 @@ export default {
 		who: {
 			control:{
 				type: 'select',
-				options: characters,
+				options: Object.keys(characters),
 			},
-			defaultValue: characters['swordsman']
+			defaultValue: 'swordsman'
 		},
 		rarity: {
 			control:{

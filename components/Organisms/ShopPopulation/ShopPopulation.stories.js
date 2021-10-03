@@ -1,5 +1,5 @@
 export default {
-	title: 'Organisms/Navigation Drawer',
+	title: 'Organisms/Shop Population',
 	argTypes: {
 		src: {
 			control:{

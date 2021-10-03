@@ -1,4 +1,5 @@
 <template>
+<v-container>
     <v-row class="inventoryGrid">
         <v-col cols="4" class="pa-0 mb-1 d-flex align-center justify-center" v-for="(items, index) in inventory" :key="items.icon + index">
             <v-hover>
@@ -10,6 +11,7 @@
             </v-hover>
         </v-col>
     </v-row>
+</v-container>
 </template>
 
 <script>
@@ -31,9 +33,6 @@ export default {
 				]
 		} 
 	},
-	mounted() {
-		console.log(this.items)
-	}
 }
 </script>
 

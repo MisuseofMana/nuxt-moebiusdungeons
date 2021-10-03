@@ -18,7 +18,7 @@
                     </ul>
                 </ContentCard>
             </v-col>
-            <v-col cols="4" @click="changePhase">
+            <v-col cols="4" @click="changePhase('LeaderBoardPage')">
                 <ContentCard hoverable class="pa-4 d-flex flex-column align-center justify-center text-center" height="25vh">
                     <v-img class="cursorPointer" :src="require('@/assets/images/sigils/traveler.png')" max-height="100" max-width="100"/>
                     <div class="text-h6">LEADERBOARDS</div>
@@ -46,7 +46,7 @@
                 </ContentCard>
             </v-col>
             <v-spacer></v-spacer>
-            <v-col cols="4">
+            <v-col cols="4" @click="changePhase('CharacterSelectPage')">
                 <ContentCard hoverable>
                     <v-img class="cursorPointer" :src="require('@/assets/images/sigils/player.png')" max-height="100" max-width="100"/>
                     <div class="text-h6">Start A New Game</div>
@@ -70,9 +70,8 @@ export default{
 		...mapMutations('gameData', [
 			'CHANGE_PHASE',
 		]),
-		changePhase(){
-			console.log('hello')
-			this.CHANGE_PHASE('LeaderBoardPage')
+		changePhase(newPhase){
+			this.CHANGE_PHASE(newPhase)
 		}
 	}
 } 

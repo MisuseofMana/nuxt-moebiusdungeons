@@ -3,8 +3,12 @@
     <v-img class="blurImage positionAbsolute" v-if="phase === 'DungeonPage'" :key="backgroundImage" :src="require(`@/assets/images/locations/placemats/${backgroundImage}.png`)" width="110vw" height="100vh"/>
     <v-container class="fullHeight positionRelative">
         <v-row class="topRowHeight" align="start">
-            <v-col cols="2">
+            <v-col cols="3">
                 <NavigationDrawer/>
+                <v-btn @click="toggleDebug">DEBUG BAR</v-btn>
+                <v-card class="pa-4" v-if="debug">
+                    <DebugBar/>
+                </v-card>
             </v-col>
             <v-spacer></v-spacer>
             <v-col cols="2" class="d-flex justify-end">
@@ -35,6 +39,11 @@ import { mapState } from 'vuex'
 
 export default {
 	name: 'DefaultLayout',
+	data(){
+		return {
+			debug: false, 
+		}
+	},
 	computed: {
 		...mapState('gameData', [
 			'phase',
@@ -46,6 +55,11 @@ export default {
 			}
 			return null
 		},
+	},
+	methods: {
+		toggleDebug() {
+			this.debug = !this.debug
+		}
 	}
 }
 </script>

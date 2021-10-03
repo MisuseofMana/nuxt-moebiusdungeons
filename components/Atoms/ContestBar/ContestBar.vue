@@ -1,15 +1,13 @@
 <template>
+<v-container>
     <v-row align="center" class="fullWidth">
-        <v-col cols="2" class="mr-0">
+        <v-col cols="12" class="mr-0 d-flex align-center">
             <IconCard />
-        </v-col>
-        <v-col cols="8" class="mr-0">
             <v-progress-linear :color="barColor" :value="contest"/>
-        </v-col>
-        <v-col cols="2" class="mr-0">
             <IconCard />
         </v-col>
     </v-row>
+</v-container>
 </template>
 
 <script>

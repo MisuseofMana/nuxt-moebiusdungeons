@@ -21,31 +21,31 @@ export default {
 			],
 			offsets: {
 				roads: {
-					top:'475px',
-					left:'613px',
+					top:'480px',
+					left:'605px',
 				},
 				caves: {
-					top:'585px',
-					left:'220px',
+					top:'570px',
+					left:'190px',
 				},
 				forest: {
-					top:'220px',
-					left:'830px',
+					top:'190px',
+					left:'810px',
 				},
 				hills: {
-					top:'200px',
+					top:'170px',
 					left:'410px',
 				},
 				ruins: {
-					top:'100px',
-					left:'1150px',
+					top:'60px',
+					left:'1140px',
 				},
 				tower: {
-					top:'120px',
-					left:'120px',
+					top:'100px',
+					left:'100px',
 				},
 				eyien: {
-					top:'700px',
+					top:'690px',
 					left:'1030px',
 				}
 			}
