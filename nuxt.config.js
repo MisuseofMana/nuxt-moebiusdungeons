@@ -1,93 +1,58 @@
 export default {
+  buildModules: [
+    // Simple usage
+    "@nuxtjs/vuetify",
+    "@nuxtjs/stylelint-module",
+  ],
 
-	buildModules: [
+  target: "static",
+  server: {
+    port: 8000, // default: 3000
+  },
+  components: {
+    dirs: [
+      "@/components/Atoms",
+      "@/components/Molecules",
+      "@/components/Organisms",
+      "@/components/PageComponents",
+      "@/components/Helpers",
+    ],
+  },
 
-		// Simple usage
+  css: ["@/assets/css/transitions.css", "@/assets/css/scrollbar.css"],
 
-		'@nuxtjs/vuetify',
+  plugins: ["@/plugins/vuetify.js"],
 
-		'@nuxtjs/stylelint-module',
+  head: {
+    title: "Moebius Dungeons",
 
-	],
+    htmlAttrs: {
+      lang: "en",
+    },
 
-	target: 'static',
-	server: {
-		port: 8000 // default: 3000
-	},
-	components: {
+    meta: [{ name: "viewport", content: "width=device-width, intial-scale=1" }],
 
-		dirs: [
+    link: [
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css?family=Frijole|Oswald&display=swap",
+      },
+    ],
+  },
 
-			'@/components/Atoms',
+  storybook: {
+    port: 7001,
 
-			'@/components/Molecules',
+    decorators: ["<v-app><story/></v-app>"],
 
-			'@/components/Organisms',
+    addons: ["@storybook/addon-controls"],
+  },
 
-			'@/components/PageComponents',
+  vuetify: {
+    customVariables: ["@/assets/variables.scss"],
 
-			'@/components/Helpers',
+    treeShake: true,
 
-		]
-
-	},
-
-	css: [
-
-		'@/assets/css/transitions.css',
-
-		'@/assets/css/scrollbar.css',
-
-	],
-
-	plugins: ['@/plugins/vuetify.js'],
-
-	head: {
-
-		title: 'Moebius Dungeons',
-
-		htmlAttrs: {
-
-			lang: 'en',
-
-		},
-
-		meta: [
-
-			{name: 'viewport', content: 'width=device-width, intial-scale=1'}
-
-		],
-
-		link: [
-
-			{rel: 'stylesheet', href: 'https://fonts.googleapis.com/css?family=Frijole|Oswald&display=swap'}
-
-		]
-
-	},
-
-	storybook: {
-
-		port:7001,
-
-		decorators: ['<v-app><story/></v-app>'],
-
-		addons: [
-
-			'@storybook/addon-controls'
-
-		]
-
-	},
-
-	vuetify: {
-
-		customVariables: ['@/assets/variables.scss'],
-
-		treeShake: true,
-
-		defaultAssets: false,
-
-	},
-
-}
+    defaultAssets: false,
+  },
+};

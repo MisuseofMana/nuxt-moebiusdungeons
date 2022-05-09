@@ -1,63 +1,101 @@
 <template>
-    <v-container>
-			<v-row no-gutters align="center" class="mb-4">
-				<v-col cols="12" class="d-flex justify-center">
-					<SceneHeading phase="Dungeon Phase" icon="monster"/>
-				</v-col>
-			</v-row>
-			<v-row no-gutters justify="center">
-				<v-col cols="1" justify-self="center" class="d-flex justify-center">
-					Player Log
-				</v-col>
-				<v-col cols="3" align-self="center" justify-self="center" class="d-flex flex-column justify-center align-center">
-					<div class="text-h6 mb-2">{{ playerClass }}</div>
-					<CharacterImage :who="characters[playerClass]" class="mb-6"/>
-					<InventoryGrid/>
-				</v-col>
-				<v-col cols="3" justify-self="center" class="d-flex flex-column justify-center mt-8">
-					<ContestBar />
-					<ContestBar />
-					<ContestBar class="mb-3"/>
-					<Button class="mb-2" text="Trade Blows"/>
-					<Button class="mb-2" :text="special"/>
-					<Button class="mb-2" text="Turn Tail"/>
-				</v-col>
-				<v-col cols="3" align-self="center" justify-self="center" class="d-flex flex-column justify-center align-center">
-					<div class="text-h6 mb-2">{{ monsterClass }}</div>
-					<CharacterImage :who="characters[monsterClass]" class="mb-5"/>
-					<InventoryGrid/>
-				</v-col>
-				<v-col cols="1" justify-self="center" class="d-flex justify-center">
-					Monster Log
-				</v-col>
-			</v-row>
-			<v-row no-gutters align="center" class="text-left">
-				<v-col cols="6">
-					
-				</v-col>
-			</v-row>
-		</v-container>
+  <v-row justify="center" dense>
+    <!-- Player Log -->
+    <v-col cols="2">
+      <v-card
+        min-height="100%"
+        class="pa-4 text-center"
+        color="rgba(255,255,255,.2)"
+      >
+        Player Log
+        <LogItem />
+      </v-card>
+    </v-col>
+
+    <!-- Player Image and Inventory -->
+    <v-col cols="2">
+      <v-card
+        min-height="100%"
+        class="pa-4 text-center d-flex flex-column justify-center align-center"
+        color="rgba(255,255,255,.2)"
+      >
+        <div class="text-h6 mb-2">{{ playerClass }}</div>
+        <CharacterImage :who="characters[playerClass].image" class="mb-3" />
+        <InventoryGrid :inventory="playerInventory" />
+        <Coin :wealth="playerWealth" />
+      </v-card>
+    </v-col>
+
+    <!-- Stat Info and Controls -->
+    <v-col cols="3">
+      <v-card
+        min-height="100%"
+        class="pa-4 d-flex flex-column justify-center align-center"
+        color="rgba(255,255,255,.2)"
+      >
+        <SceneHeading phase="Dungeon Phase" icon="monster" class="mb-5" />
+        <MettleGauge class="mb-3" />
+        <ContestBar />
+        <ContestBar />
+        <ContestBar class="mb-3" />
+        <Button color="teal accent-3" class="mb-2" text="Trade Blows" />
+        <Button color="teal accent-3" class="mb-2" :text="special" />
+        <Button color="teal accent-3" class="mb-2" text="Turn Tail" />
+      </v-card>
+    </v-col>
+
+    <!-- Monster Image and Inventory -->
+    <v-col cols="2">
+      <v-card
+        min-height="100%"
+        class="pa-4 text-center d-flex flex-column justify-center align-center"
+        color="rgba(255,255,255,.2)"
+      >
+        <div class="text-h6 mb-2">{{ monsterClass }}</div>
+        <CharacterImage :who="characters[monsterClass].image" class="mb-3" />
+        <InventoryGrid />
+        <Coin :wealth="monsterCoins" />
+      </v-card>
+    </v-col>
+
+    <v-col cols="2">
+      <v-card
+        min-height="100%"
+        class="pa-4 text-center"
+        color="rgba(255,255,255,.2)"
+      >
+        Monster Log
+        <LogItem />
+      </v-card>
+    </v-col>
+  </v-row>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-import characters from '@/components/Molecules/CharacterImage/CharacterImage.mock.js'
+import { mapState } from "vuex";
+import characters from "@/components/Molecules/CharacterImage/CharacterImage.mock.js";
 
 export default {
-	name: 'DungeonPage',
-	data() {
-		return {
-			characters,
-		}
-	},
-	computed: {
-		...mapState('playerData', {
-			playerClass: state => state.player.class,
-			special: state => state.player.special,
-		}),
-		...mapState('monsterData', {
-			monsterClass: state => state.monster.class,
-		})
-	}
-}
+  name: "DungeonPage",
+  data() {
+    return {
+      characters,
+    };
+  },
+  computed: {
+    ...mapState("playerData", {
+      playerClass: (state) => state.player.class,
+      special: (state) => state.player.special,
+      playerWealth: (state) => state.player.wealth,
+      playerInventory: (state) => state.player.inventory,
+    }),
+    ...mapState("monsterData", {
+      monsterClass: (state) => state.monster.class,
+      monsterLevel: (state) => state.monster.level,
+    }),
+    monsterCoins() {
+      return this.monsterLevel;
+    },
+  },
+};
 </script>
