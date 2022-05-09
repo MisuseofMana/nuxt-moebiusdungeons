@@ -1,22 +1,27 @@
 <template>
-    <v-img 
-    v-bind="$attrs"
-    :src="require(`@/assets/images/locations/world-map.png`)"
-	:max-width="width"
-	:min-width="width"
-	:max-height="height"
-	:min-height="height"
-    />
+  <div class="mapImage" :style="mapImage">
+    <slot />
+  </div>
 </template>
 
 <script>
 export default {
-	name:'WorldMap',
-	data() {
-		return {
-			width: 5400 / 4,
-			height: 3300 / 4,
-		}
-	},
-}
+  name: "WorldMap",
+  data() {
+    return {
+      mapImage: {
+        backgroundImage: `url(${require("@/assets/images/locations/world-map.png")})`,
+      },
+    };
+  },
+};
 </script>
+
+<style scoped>
+.mapImage {
+  position: relative;
+  width: 900px;
+  height: 550px;
+  background-size: 900px 550px;
+}
+</style>

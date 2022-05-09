@@ -107,6 +107,6 @@ export default {
 }
 
 .black-shadow {
-    text-shadow:black 0px 0px 10px;
+    text-shadow:black 0 0 10px;
 }
 </style>

@@ -1,42 +1,40 @@
 <template>
     <div class="d-flex align-center">
         <SigilImage 
-            :src="imageSource"
+            :src="icon"
             :width="75"
             :height="75"
             class="mr-2"
         />
-        <div class="text-h2">{{ phase }}</div>
+        <div class="text-h2">{{ title }}</div>
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
 	name: 'SceneHeading',
 	props: {
-		type: String,
 		phase: {
+			type: String,
 			default: 'Dungeon Phase'
-		}
-	},
-	data() {
-		return {
-			imageLookup: {
-				'Shop Phase': 'shopkeep',
-				'Dungeon Phase': 'monster',
-				'Shop Select Phase': 'shopkeep',
-				'Travel Phase': 'traveler'
-			}
+		},
+		icon: {
+			type: String,
+			default: 'shopkeep'
 		}
 	},
 	computed: {
-		imageSource() {
-			return this.imageLookup[this.phase]
+		...mapState('gameData', [
+			'location'
+		]),
+		title() {
+			if(this.phase === 'Dungeon Phase') {
+				return this.location
+			}
+			return this.phase
 		}
 	}
 }
 </script>
-
-<style lang="scss" scoped>
-
-</style>

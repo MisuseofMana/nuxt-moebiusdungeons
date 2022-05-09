@@ -1,0 +1,4 @@
+export default {
+  SET_GAME_PHASE: "SET_GAME_PHASE",
+  SET_GAME_LOCATION: "SET_GAME_LOCATION",
+};

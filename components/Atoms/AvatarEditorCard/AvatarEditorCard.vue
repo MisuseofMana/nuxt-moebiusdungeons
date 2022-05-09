@@ -1,5 +1,5 @@
 <template>
-    <v-card class="ma-2 pa-2">
+    <v-sheet class="ma-2 pa-2" elevation="2" rounded>
         <div class="d-flex justify-space-between align-center">
             <v-btn @click="decrement()"><v-icon>mdi-minus</v-icon></v-btn>
             <span class="tiny text-uppercase mx-2">
@@ -13,7 +13,7 @@
             </span>
             <v-btn @click="increment()"><v-icon>mdi-plus</v-icon></v-btn>
         </div>
-    </v-card>
+    </v-sheet>
 </template>
 
 <script>
@@ -53,7 +53,7 @@ export default {
 		},
 		increment() {
 			this.characterOptionUp(this.index)
-
+			this.$emit('changed-item')
 		}
 	}
 }

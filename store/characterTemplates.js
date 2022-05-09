@@ -23,8 +23,8 @@ export const state = () => ({
 	},
 	mage: {
 		class:'mage',
-		special: 'Variagate',
-		specialDescription:'Spend one mettle to halve enemy HP. The monster won’t attack you back when you use Variagate.',
+		special: 'Variegate',
+		specialDescription:'Spend one mettle to halve enemy HP. The monster won’t attack you back when you use Variegate.',
 		attackType: 'magical',
 		attackDescription: 'Magical attack is represented by this fireball icon. It is abbreviated MAG.',
 		maxAttack: 10,

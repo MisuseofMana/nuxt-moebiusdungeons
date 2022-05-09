@@ -77,7 +77,7 @@ export default {
 
 <style lang="scss" scoped>
 .black-shadow {
-    text-shadow:black 0px 0px 10px;
+    text-shadow:black 0 0 10px;
 }
 
 .red-shadow {

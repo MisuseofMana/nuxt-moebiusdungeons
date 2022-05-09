@@ -1,5 +1,5 @@
 export default {
-    title: 'Atoms/Button'
-  }
+	title: 'Atoms/Button'
+}
   
-  export const Button = () => '<Button />'
+export const Button = () => '<Button />'

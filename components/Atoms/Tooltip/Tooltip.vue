@@ -25,21 +25,17 @@
 </template>
 
 <script>
-    export default {
-        name:'Tooltip',
-        props: {
-            heading: {
-                type: String,
-                default: 'Heading',
-            },
-            text: {
-                type: String,
-                default: 'Text',
-            },
-        }
-    }
+export default {
+	name:'Tooltip',
+	props: {
+		heading: {
+			type: String,
+			default: 'Heading',
+		},
+		text: {
+			type: String,
+			default: 'Text',
+		},
+	}
+}
 </script>
-
-<style lang="scss" scoped>
-
-</style>

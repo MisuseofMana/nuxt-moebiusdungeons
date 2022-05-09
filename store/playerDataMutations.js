@@ -1,0 +1,3 @@
+export default {
+  OVERWRITE_PLAYER_DATA: "OVERWRITE_PLAYER_DATA",
+};

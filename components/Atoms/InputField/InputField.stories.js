@@ -1,5 +1,5 @@
 export default {
-    title: 'Atoms/Input Field'
-  }
+	title: 'Atoms/Input Field'
+}
   
-  export const InputField = () => '<InputField />'
+export const InputField = () => '<InputField />'

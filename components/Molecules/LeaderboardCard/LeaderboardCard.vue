@@ -24,13 +24,13 @@ import { mapState } from 'vuex'
 
 export default {
 	name: 'LeaderboardCard',
-    computed: {
-        ...mapState('userData', {
-            username: state => state.user.username,
-            highscore: state => state.user.highscore,
-            lifetimeKills: state => state.lifetimeKills,
-            highestStats: state => state.user.highestStat
-        })
-    }
+	computed: {
+		...mapState('userData', {
+			username: state => state.user.username,
+			highscore: state => state.user.highscore,
+			lifetimeKills: state => state.lifetimeKills,
+			highestStats: state => state.user.highestStat
+		})
+	}
 }
 </script>
