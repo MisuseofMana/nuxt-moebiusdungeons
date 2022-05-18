@@ -84,9 +84,8 @@ export default {
 }
 
 .activeLocation {
-  box-shadow: 0 0 10px gold, 3px 3px 10px gold, -3px 3px 5px gold,
-    3px -3px 5px gold, -3px -3px 5px gold;
-  background-color: gold;
+  -webkit-filter: drop-shadow(0 0 10px gold);
+  filter: drop-shadow(0 0 10px gold);
 }
 
 .cantTravel {
@@ -94,10 +93,8 @@ export default {
 }
 
 .canTravel:hover {
-  box-shadow: 0 0 10px rgb(112, 241, 170), 10px 10px 10px rgb(112, 241, 170),
-    -10px 10px 10px rgb(112, 241, 170), 10px -10px 10px rgb(112, 241, 170),
-    -10px -10px 10px rgb(112, 241, 170);
-  background-color: rgb(112, 241, 170);
+  -webkit-filter: drop-shadow(0 0 10px rgb(112, 241, 170));
+  filter: drop-shadow(0 0 10px rgb(112, 241, 170));
   cursor: pointer;
 }
 </style>

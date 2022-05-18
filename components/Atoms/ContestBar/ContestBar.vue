@@ -7,7 +7,7 @@
           :icon="playerIcon"
           :helpless="playerIsHelpless"
         />
-        <v-progress-linear :color="barColor" :value="contest" />
+        <v-progress-linear height="8px" :color="barColor" :value="contest" />
         <IconCard
           :value="monsterStatValue"
           :icon="monsterIcon"

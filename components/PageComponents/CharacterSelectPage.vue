@@ -35,7 +35,6 @@ export default {
     ...mapMutations("gameData", [gameDataMutations.SET_GAME_PHASE]),
     ...mapMutations("playerData", [playerDataMutations.OVERWRITE_PLAYER_DATA]),
     selectCharacter(who) {
-      console.log(who);
       //change character in store
       this.OVERWRITE_PLAYER_DATA(who);
       this.SET_GAME_PHASE("MapPage");

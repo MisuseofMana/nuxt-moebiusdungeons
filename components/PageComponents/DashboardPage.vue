@@ -4,16 +4,16 @@
       <v-col cols="4">
         <ContentCard class="pa-4" height="25vh">
           <div class="text-h5">Game Updates</div>
-          <div class="text-body-1">New Alpha Version - v2.0</div>
+          <div class="text-body-1">New Alpha Version - v2.0.0</div>
           <ul class="text-subtitle-2">
             <li>Complete game overhaul</li>
-            <li>New gameplay features</li>
             <li>New magical armor type</li>
-            <li>New shopkeeper</li>
-            <li>New travel system</li>
+            <li>New shopkeeper "Scribe"</li>
+            <li>Travel phase added to the game</li>
+            <li>Profile picture customization</li>
             <li>Customizable avatars</li>
             <ul>
-              <li><a href="">Complete change log here...</a></li>
+              <li><a href="">Complete change log link here.</a></li>
             </ul>
           </ul>
         </ContentCard>
