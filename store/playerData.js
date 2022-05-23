@@ -48,4 +48,10 @@ export const mutations = {
   [playerDataMutations.OVERWRITE_PLAYER_DATA](state, payload) {
     state.player = payload;
   },
+  [playerDataMutations.INCREASE_PLAYER_STAT](state, payload) {
+    state.player[payload.stat] += payload.amount;
+  },
+  [playerDataMutations.DECREASE_PLAYER_STAT](state, payload) {
+    state.player[payload.stat] -= payload.amount;
+  },
 };

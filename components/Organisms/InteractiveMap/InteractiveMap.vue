@@ -36,7 +36,7 @@ export default {
   },
   data() {
     return {
-      activeLocation: "eyien",
+      activeLocation: "roads",
       travelLookupTable: {
         roads: ["eyien", "caves", "forest", "hills", "roads"],
         caves: ["roads", "caves"],

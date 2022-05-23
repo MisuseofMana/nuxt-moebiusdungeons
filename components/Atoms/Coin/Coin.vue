@@ -14,6 +14,7 @@
       opacity="0"
       :absolute="true"
       :value="true"
+      z-index="1"
       class="white--text text-h4"
     >
       <div class="shadow">

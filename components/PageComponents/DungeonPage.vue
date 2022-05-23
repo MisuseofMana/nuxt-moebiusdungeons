@@ -8,7 +8,7 @@
         color="rgba(255,255,255,.4)"
       >
         Player Log
-        <LogItem :logItems="logItems" />
+        <LogItem :logItems="playerLogItems" />
       </v-card>
     </v-col>
 
@@ -51,7 +51,13 @@
           :playerIcon="playerAttackType + 'Attack'"
           :playerStatValue="playerAttackValue"
         />
-        <ContestBar class="mb-3" />
+        <ContestBar
+          class="mb-3"
+          :monsterIcon="monsterAttackType + 'Attack'"
+          :monsterStatValue="monsterAttackValue"
+          :playerIcon="playerArmorType + 'Armor'"
+          :playerStatValue="playerArmorValue"
+        />
         <Button color="teal accent-3" class="mb-2" text="Trade Blows" />
         <Button color="teal accent-3" class="mb-2" :text="special" />
         <MettleGauge class="mb-5" />
@@ -84,7 +90,7 @@
         color="rgba(255,255,255,.4)"
       >
         Monster Log
-        <LogItem />
+        <LogItem :logItems="monsterLogItems" />
       </v-card>
     </v-col>
   </v-row>
@@ -112,7 +118,7 @@ export default {
       playerHealthValue: (state) => state.player.health,
       playerAttackValue: (state) => state.player.attack,
       playerArmorValue: (state) => state.player.armor,
-      logItems: (state) => state.dungeonLogItems,
+      playerLogItems: (state) => state.dungeonLogItems,
     }),
     ...mapState("monsterData", {
       monsterClass: (state) => state.monster.class,
@@ -122,9 +128,10 @@ export default {
       monsterHealthValue: (state) => state.monster.health,
       monsterAttackValue: (state) => state.monster.attack,
       monsterArmorValue: (state) => state.monster.armor,
+      monsterLogItems: (state) => state.dungeonLogItems,
     }),
     monsterCoins() {
-      return this.monsterLevel;
+      return Math.ceil(this.monsterLevel);
     },
   },
 };

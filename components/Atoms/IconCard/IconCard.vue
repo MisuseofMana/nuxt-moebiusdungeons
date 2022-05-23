@@ -23,6 +23,7 @@
         :absolute="true"
         :value="true"
         class="text-h6 text-center"
+        z-index="1"
       >
         <v-img
           class="red-shadow"

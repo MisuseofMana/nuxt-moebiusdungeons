@@ -1,3 +1,5 @@
+import monsterDataMutations from "./monsterDataMutations";
+
 export const state = () => ({
   monster: {
     class: "bandits",
@@ -14,4 +16,17 @@ export const state = () => ({
     curseEnergy: 0,
     level: 1,
   },
+  dungeonLogItems: [],
 });
+
+export const mutations = {
+  [monsterDataMutations.OVERWRITE_MONSTER_DATA](state, payload) {
+    state.monster = payload;
+  },
+  [monsterDataMutations.INCREASE_MONSTER_STAT](state, payload) {
+    state.monster[payload.stat] += payload.amount;
+  },
+  [monsterDataMutations.DECREASE_MONSTER_STAT](state, payload) {
+    state.monster[payload.stat] -= payload.amount;
+  },
+};
