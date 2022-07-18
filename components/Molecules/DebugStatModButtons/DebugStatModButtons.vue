@@ -1,17 +1,20 @@
 <template>
   <div class="d-flex align-center mr-5">
-    <v-btn color="red" class="mr-1" @click="decreaseStat(5)">-5</v-btn>
-    <v-btn color="red" @click="decreaseStat(1)">-1</v-btn>
+    <v-btn color="red" class="mr-1 white--text" @click="decreaseStat(5)"
+      >-5</v-btn
+    >
+    <v-btn color="red" class="white--text" @click="decreaseStat(1)">-1</v-btn>
     <div class="mx-2">{{ who.toUpperCase() }} {{ stat.toUpperCase() }}</div>
-    <v-btn color="teal" class="mr-1" @click="increaseStat(1)">+1</v-btn>
-    <v-btn color="teal" @click="increaseStat(5)">+5</v-btn>
+    <v-btn color="teal" class="mr-1 white--text" @click="increaseStat(1)"
+      >+1</v-btn
+    >
+    <v-btn color="teal" class="white--text" @click="increaseStat(5)">+5</v-btn>
   </div>
 </template>
 
 <script>
 import { mapMutations } from "vuex";
-import playerDataMutations from "@/store/playerDataMutations";
-import monsterDataMutations from "@/store/monsterDataMutations";
+import characterDataMutations from "@/store/characterDataMutations";
 
 export default {
   name: "DebugButton",
@@ -26,13 +29,13 @@ export default {
     },
   },
   methods: {
-    ...mapMutations("playerData", [
-      playerDataMutations.INCREASE_PLAYER_STAT,
-      playerDataMutations.DECREASE_PLAYER_STAT,
+    ...mapMutations("characterData", [
+      characterDataMutations.INCREASE_PLAYER_STAT,
+      characterDataMutations.DECREASE_PLAYER_STAT,
     ]),
     ...mapMutations("monsterData", [
-      monsterDataMutations.INCREASE_MONSTER_STAT,
-      monsterDataMutations.DECREASE_MONSTER_STAT,
+      characterDataMutations.INCREASE_MONSTER_STAT,
+      characterDataMutations.DECREASE_MONSTER_STAT,
     ]),
     decreaseStat(number) {
       if (this.who === "player") {

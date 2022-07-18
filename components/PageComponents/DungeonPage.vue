@@ -8,7 +8,7 @@
         color="rgba(255,255,255,.4)"
       >
         Player Log
-        <LogItem :logItems="playerLogItems" />
+        <LogItem :logItems="truncateLog(this.playerLogItems)" />
       </v-card>
     </v-col>
 
@@ -58,8 +58,13 @@
           :playerIcon="playerArmorType + 'Armor'"
           :playerStatValue="playerArmorValue"
         />
-        <Button color="teal accent-3" class="mb-2" text="Trade Blows" />
-        <Button color="teal accent-3" class="mb-2" :text="special" />
+        <Button
+          color="teal accent-3"
+          class="mb-2"
+          text="Trade Blows"
+          @click.native="tradeBlows()"
+        />
+        <Button color="teal accent-3" class="mb-2" :text="playerSpecial" />
         <MettleGauge class="mb-5" />
 
         <Button color="teal accent-3" class="mb-2" text="Turn Tail" />
@@ -90,7 +95,7 @@
         color="rgba(255,255,255,.4)"
       >
         Monster Log
-        <LogItem :logItems="monsterLogItems" />
+        <LogItem :logItems="truncateLog(this.monsterLogItems)" />
       </v-card>
     </v-col>
   </v-row>
@@ -105,22 +110,41 @@ export default {
   data() {
     return {
       characters,
+      whosTurn: "player",
     };
   },
+  methods: {
+    truncateLog(arr) {
+      if (arr.length < 10) return arr;
+      return arr.slice(0, 10);
+    },
+    rollDamage({ stats, atkType, atkValue, level }) {
+      if (atkType === "physical") {
+        return Math.ceil(atkValue + level + stats.brawn / (10 - level));
+      }
+    },
+    tradeBlows() {
+      console.log(this.rollDamage(this.playerTradeBlowsInfo));
+    },
+  },
   computed: {
-    ...mapState("playerData", {
+    ...mapState("characterData", {
+      // player
+      playerStats: (state) => state.player.stats,
       playerClass: (state) => state.player.class,
-      special: (state) => state.player.special,
+      playerSpecial: (state) => state.player.playerSpecial,
       playerWealth: (state) => state.player.wealth,
+      playerLevel: (state) => state.player.level,
       playerInventory: (state) => state.player.inventory,
       playerAttackType: (state) => state.player.attackType,
       playerArmorType: (state) => state.player.armorType,
       playerHealthValue: (state) => state.player.health,
       playerAttackValue: (state) => state.player.attack,
       playerArmorValue: (state) => state.player.armor,
-      playerLogItems: (state) => state.dungeonLogItems,
-    }),
-    ...mapState("monsterData", {
+      playerLogItems: (state) => state.player.dungeonLogItems,
+
+      // monsters
+      monsterStats: (state) => state.monster.stats,
       monsterClass: (state) => state.monster.class,
       monsterLevel: (state) => state.monster.level,
       monsterAttackType: (state) => state.monster.attackType,
@@ -128,11 +152,20 @@ export default {
       monsterHealthValue: (state) => state.monster.health,
       monsterAttackValue: (state) => state.monster.attack,
       monsterArmorValue: (state) => state.monster.armor,
-      monsterLogItems: (state) => state.dungeonLogItems,
+      monsterLogItems: (state) => state.monster.dungeonLogItems,
     }),
     monsterCoins() {
       return Math.ceil(this.monsterLevel);
     },
+    playerTradeBlowsInfo() {
+      return {
+        stats: this.playerStats,
+        atkType: this.playerAttackType,
+        atkValue: this.playerAttackValue,
+        level: this.playerLevel,
+      };
+    },
+    playerDamageRange() {},
   },
 };
 </script>

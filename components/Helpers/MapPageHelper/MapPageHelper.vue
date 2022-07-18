@@ -1,5 +1,5 @@
 <template>
-  <GameHelper tip="Character Select Help">
+  <GameHelper tip="Map Help">
     <v-row align="center">
       <v-spacer></v-spacer>
       <v-col
@@ -18,9 +18,9 @@
       </v-col>
       <v-spacer></v-spacer>
     </v-row>
-    <v-row>
+    <v-row align="center">
       <v-spacer></v-spacer>
-      <v-col cols="4" class="text-left">
+      <v-col cols="6" align-self="center" class="text-left">
         <p class="text-body-1">
           This is a high fantasy, hack and slash, web game. The goal is to slay
           monsters in the name of the grand capitol city of
@@ -37,8 +37,7 @@
         <p>
           Tougher beasts drop more coins and some even hold relics of the realm.
         </p>
-      </v-col>
-      <v-col cols="4" class="text-left">
+
         <p>
           Take on the role of the sword-wise
           <span class="purple--text lighten-2">Swordsman</span>

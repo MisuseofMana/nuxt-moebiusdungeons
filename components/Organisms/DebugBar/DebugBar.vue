@@ -1,9 +1,5 @@
 <template>
-  <v-overlay opacity=".8" :value="debug" width="75%">
-    <div class="my-2 mb-5">
-      <v-btn color="red" @click="closeDebug">CLOSE</v-btn>
-    </div>
-
+  <v-sheet class="px-5 py-3 overflow-y-auto" height="300px">
     <div class="mb-5">
       <div class="my-2 text-h6">Pages</div>
       <DebugButton
@@ -39,18 +35,36 @@
         </div>
       </div>
     </div>
-  </v-overlay>
+
+    <div class="mb-2">
+      <div class="my-2 text-h6">Log Generation</div>
+      <span>Player Log:</span>
+      <input class="grey white--text pa-2" v-model="playerLogText" />
+      <v-btn color="teal" @click="addToPlayerLog()">Send To Log</v-btn>
+      <v-btn color="orange" @click="CLEAR_PLAYER_LOG()">Clear Player Log</v-btn>
+    </div>
+
+    <div>
+      <span>Monster Log:</span>
+      <input class="grey white--text pa-2" v-model="monsterLogText" />
+      <v-btn color="teal" @click="addToMonsterLog()">Send To Log</v-btn>
+      <v-btn color="orange" @click="CLEAR_MONSTER_LOG()"
+        >Clear Monster Log</v-btn
+      >
+    </div>
+  </v-sheet>
 </template>
 
 <script>
 import { mapMutations } from "vuex";
+import { nanoid } from "nanoid";
 import gameDataMutations from "@/store/gameDataMutations";
+import characterDataMutations from "@/store/characterDataMutations";
 
 export default {
   name: "DebugBar",
   data() {
     return {
-      openBar: "pages",
       pagesButtonColor: "teal",
       pagesButtons: [
         { text: "Dashboard", pageName: "DashboardPage" },
@@ -62,24 +76,29 @@ export default {
         { text: "Dungeon", pageName: "DungeonPage" },
         { text: "Shop", pageName: "ShopPage" },
         { text: "Leader Board", pageName: "LeaderBoardPage" },
+        { text: "Combat Formula", pageName: "CombatFormulaPage" },
       ],
       stats: ["health", "attack", "armor"],
+      playerLogText: "",
+      monsterLogText: "",
     };
-  },
-  props: {
-    debug: {
-      type: Boolean,
-      default: false,
-    },
   },
   methods: {
     ...mapMutations("gameData", [gameDataMutations.SET_GAME_PHASE]),
+    ...mapMutations("characterData", [
+      characterDataMutations.ADD_TO_MONSTER_LOG,
+      characterDataMutations.CLEAR_MONSTER_LOG,
+      characterDataMutations.ADD_TO_PLAYER_LOG,
+      characterDataMutations.CLEAR_PLAYER_LOG,
+    ]),
     changePhase(newPhase) {
-      this.closeDebug();
       this.SET_GAME_PHASE(newPhase);
     },
-    closeDebug() {
-      this.$emit("closeDebug");
+    addToMonsterLog() {
+      this.ADD_TO_MONSTER_LOG({ text: this.monsterLogText, id: nanoid() });
+    },
+    addToPlayerLog() {
+      this.ADD_TO_PLAYER_LOG({ text: this.playerLogText, id: nanoid() });
     },
   },
 };

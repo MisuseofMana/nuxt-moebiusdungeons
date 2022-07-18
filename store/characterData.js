@@ -12,7 +12,7 @@ export const state = () => ({
       heart: 12,
       thought: 5,
       instinct: 10,
-      fame: 5,
+      odyl: 5,
     },
     attackType: "physical",
     attackDescription:
@@ -67,7 +67,7 @@ export const state = () => ({
       heart: 10,
       thought: 10,
       instinct: 10,
-      fame: 5,
+      odyl: 5,
     },
   },
   levelGoals: [
@@ -87,7 +87,7 @@ export const mutations = {
     state.player[payload.stat] -= payload.amount;
   },
   [characterDataMutations.ADD_TO_PLAYER_LOG](state, payload) {
-    state.player.dungeonLogItems.push(payload);
+    state.player.dungeonLogItems.unshift(payload);
   },
   [characterDataMutations.CLEAR_PLAYER_LOG](state) {
     state.player.dungeonLogItems = [];
@@ -102,7 +102,7 @@ export const mutations = {
     state.monster[payload.stat] -= payload.amount;
   },
   [characterDataMutations.ADD_TO_MONSTER_LOG](state, payload) {
-    state.monster.dungeonLogItems.push(payload);
+    state.monster.dungeonLogItems.unshift(payload);
   },
   [characterDataMutations.CLEAR_MONSTER_LOG](state) {
     state.monster.dungeonLogItems = [];

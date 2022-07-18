@@ -48,8 +48,8 @@ export const mutations = {
 export const getters = {
   // HEALTH BAR CALCULATOR
   healthBar: (state, getters, rootState, rootGetters) => {
-    const player = rootGetters["playerData/calcHealth"];
-    const monster = rootGetters["monsterData/calcHealth"];
+    const player = rootGetters["characterData/calcHealth"];
+    const monster = rootGetters["characterData/calcHealth"];
     const hpPool = monster + player;
     if (monster <= 0) return 100;
     else if (player <= 0) return 0;
@@ -58,8 +58,8 @@ export const getters = {
 
   //ARMOR BAR CALCULATOR
   playerAttackVsArmor: (state, getters, rootState, rootGetters) => {
-    const player = rootGetters["playerData/calcAttackMax"];
-    const monster = rootGetters["monsterData/calcArmor"];
+    const player = rootGetters["characterData/calcAttackMax"];
+    const monster = rootGetters["characterData/calcArmor"];
 
     const armPool = player + monster;
 
@@ -70,8 +70,8 @@ export const getters = {
 
   //ATTACK BAR CALCULATOR
   playerArmorVsAttack: (state, getters, rootState, rootGetters) => {
-    const player = rootGetters["playerData/calcArmor"];
-    const monster = rootGetters["monsterData/calcAttackMax"];
+    const player = rootGetters["characterData/calcArmor"];
+    const monster = rootGetters["characterData/calcAttackMax"];
     if (monster <= 0) return 100;
     else if (player <= 1) return 5;
     else if (rootState["monsterData"].info.attackType === "magical") return 5;
