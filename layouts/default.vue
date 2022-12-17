@@ -14,8 +14,14 @@
       <v-row class="topRowHeight" align="start">
         <v-col cols="3" class="d-flex flex-row">
           <NavigationDrawer />
-          <v-btn @click="toggleDebug">DEBUG BAR</v-btn>
-          <DebugBar :debug="debug" @closeDebug="toggleDebug" />
+          <v-bottom-sheet v-model="debug" inset>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn color="orange" dark v-bind="attrs" v-on="on">
+                Debug Bar
+              </v-btn>
+            </template>
+            <DebugBar />
+          </v-bottom-sheet>
         </v-col>
         <v-spacer></v-spacer>
         <v-col cols="2" class="d-flex justify-end">

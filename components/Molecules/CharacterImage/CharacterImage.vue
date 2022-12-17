@@ -1,5 +1,5 @@
 <template>
-  <v-hover>
+  <v-hover class="pointer">
     <template v-slot:default="{ hover }">
       <v-card class="size d-flex flex-column align-center justify-center">
         <v-img
@@ -56,7 +56,6 @@ export default {
         virulent: "virulentOverlay",
         fearsome: "fearsomeOverlay",
         bloodless: "bloodlessOverlay",
-        flawless: "flawlessOverlay",
       },
       characters,
     };
@@ -76,6 +75,10 @@ export default {
 .size {
   height: 225px;
   width: 190px;
+}
+
+.pointer {
+  cursor: pointer;
 }
 
 .virulentOverlay {

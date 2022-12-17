@@ -1,13 +1,11 @@
 <template>
   <div>
-    <div
-      class="borders"
-      v-for="(items, index) in logItems"
-      :key="items + index"
-    >
-      <div class="text-body-2 py-2 text-center">
-        {{ items }}
-      </div>
+    <div v-for="item in logItems" class="borders" :key="item.id">
+      <transition name="fade" mode="out-in" appear>
+        <div class="text-body-2 py-2 text-center">
+          {{ item.text }}
+        </div>
+      </transition>
     </div>
   </div>
 </template>
@@ -26,11 +24,11 @@ export default {
 
 <style scoped>
 .borders {
-  border-top: 1px black solid;
+  border-bottom: 1px black solid;
 }
 
 .borders:first-child {
-  border-top: none;
-  border-bottom: none;
+  margin-top: 15px;
+  border-top: 1px black solid;
 }
 </style>

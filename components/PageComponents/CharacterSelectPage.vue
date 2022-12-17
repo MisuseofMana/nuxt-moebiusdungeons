@@ -24,7 +24,7 @@
 <script>
 import { mapState, mapMutations } from "vuex";
 import gameDataMutations from "@/store/gameDataMutations";
-import playerDataMutations from "@/store/playerDataMutations";
+import characterDataMutations from "@/store/characterDataMutations";
 
 export default {
   name: "CharacterSelectPage",
@@ -33,9 +33,10 @@ export default {
   },
   methods: {
     ...mapMutations("gameData", [gameDataMutations.SET_GAME_PHASE]),
-    ...mapMutations("playerData", [playerDataMutations.OVERWRITE_PLAYER_DATA]),
+    ...mapMutations("characterData", [
+      characterDataMutations.OVERWRITE_PLAYER_DATA,
+    ]),
     selectCharacter(who) {
-      console.log(who);
       //change character in store
       this.OVERWRITE_PLAYER_DATA(who);
       this.SET_GAME_PHASE("MapPage");

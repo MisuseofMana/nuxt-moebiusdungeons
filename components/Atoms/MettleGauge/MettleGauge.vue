@@ -1,5 +1,5 @@
 <template>
-  <v-card class="d-flex align-center px-4 py-2">
+  <v-card class="d-flex align-center justify-center px-4 py-1" width="100%">
     <div class="text-uppercase pr-2">Mettle:</div>
     <v-img
       v-for="n in availableMettle"
